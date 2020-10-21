@@ -10,11 +10,21 @@ ul {
 button,
 input[type="button"],
 a.button {
-  padding: 10px 12px;
-  background: #eee;
-  border: none;
+  cursor: pointer;
+  box-shadow: 0px 1px 0px 0px #365b6d;
+  background: #365b6d;
+  background-color: #365b6d;
+  border-radius: 3px;
+  border: 1px solid #365b6d;
+  display: inline-block;
+  cursor: pointer;
+  color: #e0c35c;
+  font-family: Arial;
+  font-size: 12px;
   font-weight: bold;
-  cursor: pointer; }
+  padding: 8px 14px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #365b6d; }
 
 input[type="text"],
 input[type="password"],
@@ -50,7 +60,7 @@ header {
     height: 100%; }
     header nav a {
       padding: 0 24px;
-      border-right: 1px solid #365B6D;
+      border-right: 1px solid #365b6d;
       display: flex;
       height: 100%;
       align-items: center; }
@@ -85,18 +95,58 @@ main {
   main p {
     max-width: 560px; }
 
+.card {
+  position: relative;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  width: 60%;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem; }
+
+.card-img-top {
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px); }
+
+.card-body {
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  padding: 1.25rem; }
+
+.card-title {
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem; }
+
+div.button-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 45%; }
+
+.button-section {
+  display: flex;
+  flex-direction: row;
+  margin: 20px; }
+
+.button1 {
+  margin-left: 10px;
+  margin-right: 10px; }
+
 .event-details-box {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   list-style: none;
-  margin-bottom: 40px;
   box-shadow: 0 7px 15px 6px #adabab;
   flex-grow: 1;
   flex-basis: 0%;
   width: 400px;
   border-radius: 3px;
-  padding: 24px; }
+  padding: 24px;
+  width: 60%; }
   .event-details-box span {
     width: 24px;
     height: 24px;
@@ -105,18 +155,45 @@ main {
     margin-right: 4px;
     color: #aaa; }
 
-.event-section {
+.event-description {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   list-style: none; }
-  .event-section .event-img {
-    margin-right: 30px; }
 
 .event-details-page {
   display: flex;
   flex-direction: column;
   align-items: center; }
+
+.event-details-buttons {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; }
+
+.registration-message {
+  color: #D0B240; }
+
+.now-registered, .cancel-registration {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  list-style: none;
+  box-shadow: 0 7px 15px 6px #adabab;
+  flex-grow: 1;
+  flex-basis: 0%;
+  border-radius: 3px;
+  padding: 24px;
+  width: 70%; }
+  .now-registered span, .cancel-registration span {
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    margin-right: 4px;
+    color: #aaa; }
 
 ul.upcoming-events {
   display: flex;

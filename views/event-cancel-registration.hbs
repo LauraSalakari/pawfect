@@ -1,17 +1,17 @@
-<h1>You are no longer registered to this event!</h1>
-<h2>We hope to see you at another event soon.</h2>
-<br>
-<h3>{{ data.title }}</h3>
-<h4>{{ data.type }}</h4>
-<ul>
-  <li>{{ data.datePretty }} - {{ data.location }}</li>
-</ul>
-<br>
+<section class="cancel-registration">
+  <h1 class="registration-message">You are no longer registered to this event!</h1>
+  <h2>We hope to see you at another event soon.</h2>
+  <br>
+  <h3>{{ data.title }}</h3>
+  <h4>{{ data.type }}</h4>
+  
+    <p><span class="fas fa-calendar"></span>{{ data.datePretty}}</p>
+    <p><span class="fas fa-clock"></span>{{ data.time}}</p>
+    <p><span class="fas fa-map-marker"></span>{{ data.location }}</p>
+  <br>
 
-{{!-- <img class="event-picture"
-     src="{{ eventsData.picture }}"
-     alt= "{{ eventsData.title }} picture" > --}}
 
-<a href="/events">
-  <button type="submit" class="btn btn-primary">All Events</button>
-</a>
+  <a href="/events">
+    <button type="submit" class="btn btn-primary">All Events</button>
+  </a>
+</section>
