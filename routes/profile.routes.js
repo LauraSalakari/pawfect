@@ -95,7 +95,7 @@ router.post("/profiles/edit/password", (req, res) => {
               .genSalt(10)
               .then((salt) => {
                 bcrypt
-                  .hash(password, salt)
+                  .hash(newPassword, salt)
                   .then((hashedPassword) => {
                     UserModel.findByIdAndUpdate(userId, { $set: { password: hashedPassword } })
                       .then(() => {
