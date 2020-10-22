@@ -1,8 +1,8 @@
 {{!-- //Signup for - always method=POST - action=/signup - name attribute for the DB - Submit button --}}
 <h1>Upcoming events</h1>
 
-<div>
-  <b>Filter the events</b>
+<div class="filter-events">
+  <h3 class="filter-title"><b>Filter the events</b></h3>
   <form method="GET" action="/events">
     <input type="checkbox" name="Active">
     <label for="Active">Active</label>
@@ -13,7 +13,7 @@
     <input type="checkbox" name="Socialization">
     <label for="Socialization">Socialization</label>
     <br/>
-    <button type="submit">Filter</button>
+    <button class="form-btn btn-hover color-1" type="submit">Filter</button>
   </form>
 </div>
 

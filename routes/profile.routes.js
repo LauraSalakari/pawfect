@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const moment = require("moment");
+
 const UserModel = require("../model/User.model");
 var bcrypt = require("bcryptjs");
 const PetProfileModel = require("../model/PetProfile.model");
@@ -17,7 +19,9 @@ router.get("/profile", (req, res) => {
       let eventsData = await EventModel.find({ date: { $gte: new Date() }, attendEvent: userData._id }, null, {
         sort: { date: "asc" },
       });
-  
+      // eventsData.datePretty = moment(eventsData.date).format('YYYY-MM-DD');
+      
+
       console.log(eventsData);
 
       res.render("profiles/profile", { userData, myProfile: true, petData, eventsData });

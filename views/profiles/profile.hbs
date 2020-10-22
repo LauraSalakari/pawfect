@@ -1,46 +1,52 @@
-<div class="avatar">
-  <img src="/profile/{{ userData._id }}/picture" alt="User Picture" height="100">
-  {{#if myProfile}}
-  <h1>Hi, {{userData.name}}</h1>
-  {{else}}
-  <h1>{{userData.name}}</h1>
-  {{/if}}
-</div>
-
-<p>Location: {{userData.location}}</p>
-<br>
-
-<div>
-  About me:
-  <div>{{userData.bio}}</div>
-</div>
-{{#if petData}}
-<div style="margin: 12px">
-  Pets:
-  {{#each petData}}
-  <div>
-    <p>Name: <a href="/petprofile/{{this._id}}">{{this.name}}</a></p>
-    <p>Birthyear: {{this.birthYear}}</p>
+<div class="blog-card alt">
+  <div class="meta">
+    <img class="photo" src="/profile/{{ userData._id }}/picture" alt="User Picture" style="width: 400px;
+  height: 600px;
+  object-fit: cover;">
+    {{!-- <div class="photo" style="background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-2.jpg)"></div> --}}
+    <ul class="details">
+      <li class="author" style="margin-left: 20px;">
+        <h3>About me:</h3>
+      </li>
+      <p style="margin-left: 20px;">{{userData.bio}}</p>
+    </ul>
   </div>
-  {{/each}}
+  <div class="description">
+    <h1>
+      {{#if myProfile}}
+      <h1>Hi, {{userData.name}}</h1>
+      {{else}}
+      <h1>{{userData.name}}</h1>
+      {{/if}}
+    </h1>
+    <h2>{{userData.location}}</h2>
+
+    {{#if petData}}
+    <div class="eachpet">
+      Pets:
+      {{#each petData}}
+      <div>
+        <p>Name: <a href="/petprofile/{{this._id}}">{{this.name}}</a></p>
+        <p>Birthyear: {{this.birthYear}}</p>
+      </div>
+      {{/each}}
+    </div>
+    {{/if}}
+
+    {{#unless myProfile}}
+    <a href="/messages/send/{{userData._id}}">Send a message!</a>
+    {{else}}
+
+    <h2>Your upcoming events</h2>
+    <ul>
+      {{#each eventsData}}
+      <li><a href="/event-details/{{_id}}">{{date}} - {{title}} - {{location}}</a></li>
+      {{/each}}
+    </ul>
+    <div class="btn-profile">
+      <button class="edit-petprofile"><a href="/profile/edit">Edit Profile</a></button>
+      <button class="create-petprofile"><a href="/petprofile/create">Add a Pet!</a></button>
+    </div>
+    {{/unless}}
+  </div>
 </div>
-{{/if}}
-
-{{#unless myProfile}}
-<a href="/messages/send/{{userData._id}}">Send a message!</a>
-{{else}}
-
-<h2>Your upcoming events</h2>
-<ul>
-{{#each eventsData}}
-<li><a href="/event-details/{{_id}}">{{date}} - {{title}} - {{location}}</a></li>
-{{/each}}
-</ul>
-
-
-<a href="/profile/edit">Edit Profile</a>
-<br />
-<a href="/petprofile/create">Add a Pet!</a>
-
-
-{{/unless}}

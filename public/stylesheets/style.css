@@ -8,6 +8,9 @@
 ul {
   list-style-position: inside; }
 
+.input-form {
+  margin-bottom: 15px; }
+
 button,
 input[type="button"],
 a.button {
@@ -15,7 +18,7 @@ a.button {
   box-shadow: 0px 1px 0px 0px #365b6d;
   background: #365b6d;
   background-color: #365b6d;
-  border-radius: 3px;
+  border-radius: 10px;
   border: 1px solid #365b6d;
   display: inline-block;
   cursor: pointer;
@@ -219,6 +222,22 @@ div.button-section {
     margin-right: 4px;
     color: #aaa; }
 
+div.filter-events {
+  margin: 16px;
+  box-shadow: 0 7px 15px 6px #adabab;
+  flex-grow: 1;
+  flex-basis: 0%;
+  min-width: 25%;
+  border-radius: 3px;
+  padding: 24px; }
+
+.filter-title {
+  color: #D0B240;
+  margin-bottom: 20px; }
+
+.form-btn {
+  margin-top: 20px; }
+
 ul.upcoming-events {
   display: flex;
   flex-wrap: wrap;
@@ -358,7 +377,7 @@ body {
   font-family: 'Rubik', sans-serif;
   outline: 0;
   transition: .2s;
-  margin-top: 20px; }
+  margin-top: 0px; }
 
 .form-field:focus {
   border-color: #0f7ef1; }
@@ -401,7 +420,10 @@ body {
   animation-delay: 2.6s; }
 
 .a8 {
-  animation-delay: 2.6s; }
+  animation-delay: 2.7s; }
+
+.a9 {
+  animation-delay: 2.8s; }
 
 @keyframes move {
   0% {
@@ -577,5 +599,23 @@ body {
           transform: skew(3deg); }
         .blog-card.alt .details {
           padding-left: 25px; } }
+
+.upcoming-events-profile {
+  box-shadow: 0 7px 15px 6px #adabab;
+  flex-grow: 1;
+  flex-basis: 0%;
+  border-radius: 3px;
+  padding: 24px; }
+
+.btn-profile {
+  margin-top: 20px; }
+
+.edit-petprofile {
+  margin-right: 10px; }
+
+.eachpet {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  line-height: 10px; }
 
 /*# sourceMappingURL=style.css.map */

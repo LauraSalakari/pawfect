@@ -1,55 +1,49 @@
 {{!-- EDIT EVENT --}}
+<div class="container">
+  <div class="left">
+    <div class="header">
+      <h2 class="animation a1">PAWSOME! </h2>
+      <h4 class="animation a2">You can edit your event</h4>
+    </div>
+
+    <div class="form">
 <form method="POST" action="/event/{{ event.id }}/edit">
 
-  <div class="field">
-    <label>Title</label>
-    <div class="input"><input value="{{event.title}}" type="text" name="title"  ></div>
-  </div>
+        <label class="animation a3">Title</label><br>
+        <input  value="{{event.title}}" type="text" name="title" class="input-form form-field animation a3" placeholder="Title of event"><br>
 
-  <div class="field">
-    <label>Location</label>
-    <div class="input"><input value="{{event.location}}" type="text" name="location"  ></div>
-  </div>
+        <label  class="animation a4">Location</label><br>
+        <input  value="{{event.location}}" type="text" name="location" class="input-form form-field animation a4" placeholder="Enter your location"><br>
 
-  <div class="field">
-    <label>Date</label>
-    <div class="input"><input value="{{event.datePretty}}" type="date" name="date"  ></div>
-  </div>
+        <label  class="animation a5">Date</label><br>
+        <input  value="{{event.datePretty}}" type="date" name="date" class=" input-form form-field animation a5"><br>
 
-  <div class="field">
-    <label>Time</label>
-    <div class=""> <input value="{{event.time}}" type="time" id="appt" name="time"  min="00:00" max="23:59"></div>
-  </div>
+        <label  class="animation a6">Time</label><br>
+        <input  value="{{event.time}}" type="time" id="appt" name="time" min="00:00" max="23:59" class="input-form form-field animation a6"><br>
 
-  <div class="field">
-    <label>Type</label>
-    <div class="input">    <select name="type">
-      <option>Active</option>
-      <option>Training</option>
-      <option>Relaxed meetup</option>
-      <option>Socialization</option>
-    </select></div>
-  </div>
+        <label  class="animation a7">Type</label><br>
+        <select  name="type" class="input-form form-field animation a7"><br>
+          <option>Active</option>
+          <option>Training</option>
+          <option>Relaxed meetup</option>
+          <option>Socialization</option>
+        </select><br>
 
-<div class="field">
-    <label>Description</label>
-    <div class="input">
-      <textarea  class="description-box" name="description" cols="40"
-        rows="5">{{event.description}}</textarea>
+        <label  class="animation a8">Description</label><br>
+        <textarea  name="description" class="input-form form-field animation a8" placeholder="Description of event" cols="40"
+          rows="5">{{event.description}}</textarea><br>
+        <label  class="animation a9" for="avatar">Choose a event picture</label><br>
+        <input value="{{event.eventPicture}}" type="url" id="downloadeventpic" name="eventPicture" class="input-form form-field animation a9"
+          accept="image/png, image/jpeg">
+        <br>
+        <button type="submit">Create event</button>
+
+      </form>
     </div>
+    {{#if message}}
+    <div class="error">{{message}}</div>
+    {{/if}}
   </div>
+  <div class="right-create-event"></div>
+</div>
 
-  <div>
-    <label for="avatar">Choose a event picture</label>
-    <br>
-    <input value="{{event.eventPicture}}" type="url" id="downloadeventpic" name="eventPicture" accept="image/png, image/jpeg">
-    {{!-- <button type="submit" class="btn btn-primary">Upload my Picture</button> --}}
-  </div>
-
-
-  <button type="submit">Update event</button>
-</form>
-
-{{#if message}}
-  <div class="error">{{message}}</div>
-{{/if}}
