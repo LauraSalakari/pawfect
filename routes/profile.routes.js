@@ -68,7 +68,7 @@ router.get("/profile/:id/picture", (req, res) => {
 router.post("/profile/edit", uploader.single("imageUrl"), (req, res) => {
   let userId = req.session.loggedInUser._id;
 
-  console.log('file is: ', req.file);
+  // console.log('file is: ', req.file);
   if (!req.file) {
     next(new Error('No file uploaded!'));
     return;
@@ -76,16 +76,16 @@ router.post("/profile/edit", uploader.single("imageUrl"), (req, res) => {
   UserModel.findByIdAndUpdate(userId, { $set: {...req.body, avatar: req.file.path} })
   .then((resultUser) => {
 
-      if (req.files && req.files.avatarPicture) {
-        resultUser.avatarPicture.data = req.files.avatarPicture.data;
-        resultUser.avatarPicture.contentType = req.files.avatarPicture.mimetype;
-        resultUser.save();
-      }
+      // if (req.files && req.files.avatarPicture) {
+      //   resultUser.avatarPicture.data = req.files.avatarPicture.data;
+      //   resultUser.avatarPicture.contentType = req.files.avatarPicture.mimetype;
+      //   resultUser.save();
+      // }
 
       UserModel.findById(userId)
         .then((data) => {
           req.session.loggedInUser = data;
-          console.log(req.session.loggedInUser);
+          // console.log(req.session.loggedInUser);
           res.redirect("/profile");
         })
         .catch((err) => { console.log("failed to update session info", err); });
