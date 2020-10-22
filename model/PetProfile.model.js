@@ -17,8 +17,7 @@ const petProfileSchema = new Schema({
     ref: "User"//refers to the collection name
   },
   petPicture: {
-    data: Buffer, 
-    contentType: String
+    type: String
   }, 
 }, { timestamps: true } //find out when booking happened
 );

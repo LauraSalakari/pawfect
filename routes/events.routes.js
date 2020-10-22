@@ -2,8 +2,7 @@ const express = require("express");
 const moment = require("moment");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
-const fs = require('fs');
-
+const uploader = require('../configs/cloudinary.config');
 const UserModel = require("../model/User.model");
 const EventModel = require("../model/Event.model");
 
@@ -52,9 +51,14 @@ router.get("/events", (req, res) => {
     });
 });
 
-router.post("/create-event", (req, res) => {
+router.post("/create-event", uploader.single("imageUrl"), (req, res) => {
   const { title, location, date, time, type, description, eventPicture } = req.body;
-  console.log(req.body)
+
+  console.log('file is: ', req.file);
+  if (!req.file) {
+    next(new Error('No file uploaded!'));
+    return;
+  }
 
   if (!title || !location || !date || !time || !type) {
     res.status(500).render("create-event.hbs", {
@@ -76,7 +80,8 @@ router.post("/create-event", (req, res) => {
   EventModel.create({
     ...req.body,
     user: newUser,
-    attendEvent: newUser
+    attendEvent: newUser,
+    eventPicture: req.file.path
     // attendEvent: [ mongoose.Schema.Types.ObjectId ]
   })
     .then((resultEvent) => {
@@ -90,7 +95,7 @@ router.post("/create-event", (req, res) => {
       res.redirect("/events");
     })
     .catch((err) => {
-      console.log("Failled to create event in DB", err);
+      console.log("Failed to create event in DB", err);
     });
 
   //res.render("create-event.hbs");

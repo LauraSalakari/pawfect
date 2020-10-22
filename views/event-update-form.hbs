@@ -1,5 +1,5 @@
 {{!-- EDIT EVENT --}}
-<form method="POST" action="/event/{{ event.id }}/edit">
+<form method="POST" action="/event/{{ event.id }}/edit" enctype="multipart/form-data">
 
   <div class="field">
     <label>Title</label>
@@ -40,9 +40,9 @@
   </div>
 
   <div>
-    <label for="avatar">Choose a event picture</label>
+    <label for="avatar">Choose an event picture</label>
     <br>
-    <input value="{{event.eventPicture}}" type="url" id="downloadeventpic" name="eventPicture" accept="image/png, image/jpeg">
+    <input type="file" name="imageUrl" accept="image/png, image/jpeg">
     {{!-- <button type="submit" class="btn btn-primary">Upload my Picture</button> --}}
   </div>
 

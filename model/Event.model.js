@@ -32,8 +32,7 @@ const eventSchema = new mongoose.Schema(
       //unique: true // to only register once
     },
     eventPicture: {
-      data: Buffer, 
-      contentType: String
+      type: String
     }, 
 
     description: {

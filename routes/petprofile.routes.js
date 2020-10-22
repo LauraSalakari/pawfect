@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 var bcrypt = require("bcryptjs");
-
+const uploader = require('../configs/cloudinary.config');
 const UserModel = require("../model/User.model");
 const EventModel = require("../model/Event.model");
 const PetProfileModel = require("../model/PetProfile.model");
