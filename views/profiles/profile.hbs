@@ -1,10 +1,19 @@
-{{#if myProfile}}
-<h1>Hi {{userData.name}}!</h1>
-{{else}}
-<h1>{{userData.name}}</h1>
-{{/if}}
+<div class="avatar">
+  <img src="/profile/{{ userData._id }}/picture" alt="User Picture" height="100">
+  {{#if myProfile}}
+  <h1>Hi, {{userData.name}}</h1>
+  {{else}}
+  <h1>{{userData.name}}</h1>
+  {{/if}}
+</div>
+
 <p>Location: {{userData.location}}</p>
 <br>
+
+<div>
+  About me:
+  <div>{{userData.bio}}</div>
+</div>
 {{#if petData}}
 <div style="margin: 12px">
   Pets:
@@ -19,9 +28,19 @@
 
 {{#unless myProfile}}
 <a href="/messages/send/{{userData._id}}">Send a message!</a>
-
 {{else}}
+
+<h2>Your upcoming events</h2>
+<ul>
+{{#each eventsData}}
+<li><a href="/event-details/{{_id}}">{{date}} - {{title}} - {{location}}</a></li>
+{{/each}}
+</ul>
+
+
 <a href="/profile/edit">Edit Profile</a>
 <br />
 <a href="/petprofile/create">Add a Pet!</a>
+
+
 {{/unless}}

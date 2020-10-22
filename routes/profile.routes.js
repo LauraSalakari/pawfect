@@ -4,13 +4,23 @@ const UserModel = require("../model/User.model");
 var bcrypt = require("bcryptjs");
 const PetProfileModel = require("../model/PetProfile.model");
 const uploader = require('../configs/cloudinary.config');
-
+const EventModel = require("../model/Event.model");
 
 router.get("/profile", (req, res) => {
   let userData = req.session.loggedInUser;
+
   PetProfileModel.find({ user: userData._id })
-    .then((petData) => {
-      res.render("profiles/profile", { userData, myProfile: true, petData });
+    .then(async(petData) => {
+
+      // await waits for promises to be resolved or rejected and returns the result
+      // this makes it easier to control the flow of multiple asynchronous function
+      let eventsData = await EventModel.find({ date: { $gte: new Date() }, attendEvent: userData._id }, null, {
+        sort: { date: "asc" },
+      });
+  
+      console.log(eventsData);
+
+      res.render("profiles/profile", { userData, myProfile: true, petData, eventsData });
     })
     .catch((err) => {
       console.log("failed to add pet", err);
@@ -40,20 +50,20 @@ router.get("/profile/edit/password", (req, res) => {
   res.render("profiles/edit-password");
 });
 
-// router.get("/profile/:id/picture", (req, res) => {
-//   const { id } = req.params;
+router.get("/profile/:id/picture", (req, res) => {
+  const { id } = req.params;
+  UserModel.findById(id)
+    .then((userData) => {
+      if (userData.avatarPicture) {
+        res.write(userData.avatarPicture.data);
+      }
+      res.end();
+    })
+    .catch((err) => {
+      console.log("There is an error", err);
+    });
+});
 
-//   UserModel.findById(id)
-//     .then((userData) => {
-
-//       res.write(userData.avatarPicture.data);
-//       res.end();
-
-//     })
-//     .catch((err) => {
-//       console.log("There is an error", err);
-//     });
-// });
 
 router.post("/profile/edit", uploader.single("imageUrl"), (req, res) => {
   let userId = req.session.loggedInUser._id;
@@ -66,9 +76,11 @@ router.post("/profile/edit", uploader.single("imageUrl"), (req, res) => {
   UserModel.findByIdAndUpdate(userId, { $set: {...req.body, avatar: req.file.path} })
   .then((resultUser) => {
 
-      //resultUser.avatarPicture.data = req.files.avatarPicture.data;
-      //resultUser.avatarPicture.contentType = req.files.avatarPicture.mimetype;
-      //resultUser.save();
+      if (req.files && req.files.avatarPicture) {
+        resultUser.avatarPicture.data = req.files.avatarPicture.data;
+        resultUser.avatarPicture.contentType = req.files.avatarPicture.mimetype;
+        resultUser.save();
+      }
 
       UserModel.findById(userId)
         .then((data) => {

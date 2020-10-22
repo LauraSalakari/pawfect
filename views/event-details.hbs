@@ -3,7 +3,7 @@
   <div class="meta">
     <div class="photo" style="background-image: url({{ eventsData.eventPicture }})"></div>
     <ul class="details">
-      <li class="author">Host: <a href="/profile/{{eventsDate.user._id}}">{{ eventsData.user.name }}</a></li>
+      <li class="author">Host: <a href="/profile/{{eventsData.user._id}}">{{ eventsData.user.name }}</a></li>
       <li class="date">{{ eventsData.datePretty}} - {{ eventsData.time}}</li>
       <li class="map"></span>{{ eventsData.location }}</li>
     </ul>
@@ -14,33 +14,39 @@
     <h3> Event Description</h3>
     <p>{{ eventsData.description }}</p>
     <p class="read-more">
-      <div class="button-section">
-          {{#if user }}
-          <a href="/event/{{ eventsData._id }}/edit">
-            <button class="button1" type="submit" class="btn btn-primary">Edit</button>
-          </a>
+    <div class="button-section">
+      {{#if user }}
+      <a href="/event/{{ eventsData._id }}/edit">
+        <button class="button1" type="submit" class="btn btn-primary">Edit</button>
+      </a>
 
-          <form method="POST" action="/event/{{ eventsData._id }}/delete">
-            <a href="/event/{{ eventsData._id }}/delete"></a>
-            <button class="button1" type="submit" class="btn btn-primary">Delete</button>
-            </a>
-          </form>
+      <form method="POST" action="/event/{{ eventsData._id }}/delete">
+        <a href="/event/{{ eventsData._id }}/delete"></a>
+        <button class="button1" type="submit" class="btn btn-primary">Delete</button>
+        </a>
+      </form>
 
-          {{else}}
-          {{#if attendee }}
-          <a href="/event-cancel-registration/{{ eventsData._id }}">
-            <button class="button1" type="button" class="btn btn-primary">Cancel Registration</button>
-          </a>
-          {{else}}
-          <a href="/event-registration/{{ eventsData._id }}">
-            <button class="button1" type="button" class="btn btn-primary">Register</button>
-          </a>
-          {{/if}}
-          {{/if}}
-          <a href="/events">
-            <button class="button1" type="button" class="btn btn-primary">Events</button>
-          </a>
-        </div>
+      {{else}}
+      {{#if attendee }}
+      <a href="/event-cancel-registration/{{ eventsData._id }}">
+        <button class="button1" type="button" class="btn btn-primary">Cancel Registration</button>
+      </a>
+      {{else}}
+      <a href="/event-registration/{{ eventsData._id }}">
+        <button class="button1" type="button" class="btn btn-primary">Register</button>
+      </a>
+      {{/if}}
+      {{/if}}
+      <a href="/events">
+        <button class="button1" type="button" class="btn btn-primary">Events</button>
+      </a>
+    </div>
     </p>
   </div>
+</div>
+<div>
+  People joining:
+  {{#each attendeesData}}
+  <div><a href="/profile/{{this._id}}">{{this.name}}</a></div>
+  {{/each}}
 </div>
