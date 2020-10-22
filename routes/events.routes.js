@@ -6,17 +6,6 @@ const uploader = require('../configs/cloudinary.config');
 const UserModel = require("../model/User.model");
 const EventModel = require("../model/Event.model");
 
-//EVENTS
-// router.use((req, res, next) => {
-//   if (req.session.loggedInUser) {
-//     // if there's user in the session (user is logged in)
-//     next();
-//   } else {
-//     res.redirect("/login");
-//   }
-// });
-
-
 router.get("/create-event", (req, res) => {
   res.render("create-event.hbs");
 });
@@ -102,16 +91,6 @@ router.post("/create-event", uploader.single("imageUrl"), (req, res) => {
 });
 
 
-// router.use((req, res, next) => {
-//   if (req.session.currentUser) {
-//     // if there's user in the session user is logged in
-//     next();
-//   } else {
-//     res.redirect("/signin");
-//   }
-// });
-
-
 //EDIT EVENT
 
 // GET route to show the form to update a single event.
@@ -171,16 +150,11 @@ router.get("/event-details/:id", async (req, res) => {
   EventModel.findById(id)
     .populate("user")
     .then(async (eventsData) => {
-      // console.log("THIS IS EVENT DATA", eventsData);
-      // console.log(`THIS IS ${eventsData.user} DETAILS`);
-      //console.log(req.session.loggedInUser._id === eventsData.user._id)
-      //console.log(eventsData)
       let creator = null;
       if (req.session.loggedInUser && eventsData.user) {
         creator = (JSON.stringify(req.session.loggedInUser._id) ===
           JSON.stringify(eventsData.user._id))
       }
-
 
       // eventsData.time = moment(eventsData.time).format('HH:mm');
       eventsData.datePretty = moment(eventsData.date).format('YYYY-MM-DD');
@@ -201,13 +175,6 @@ router.get("/event-details/:id", async (req, res) => {
         }
       }
       res.render("event-details.hbs", { eventsData, user: creator, attendee, attendeesData });      // if (
-      //   JSON.stringify(req.session.loggedInUser._id) ===
-      //   JSON.stringify(eventsData.user._id)
-      // ) {
-      //   res.render("event-details.hbs", { eventsData, user: true});
-      // } else {
-      //   res.render("event-details.hbs", { eventsData });
-      // }
     })
     .catch((err) => {
       console.log("There is an error", err);
