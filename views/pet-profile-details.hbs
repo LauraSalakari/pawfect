@@ -1,25 +1,29 @@
-
 <div class="avatar">
-  <img src="/petprofile/{{ petProfileData._id }}/picture" alt="Pet Picture" height="100">
+  {{#if userData.avatar}}
+  <img src={{petProfileData.petPicture}} alt="User Picture" height="100">
+  {{else}}
+  <img src="/images/pet-default.jpeg" alt="User Picture" height="100">
+  {{/if}}
   <h1>{{petProfileData.name}}</h1>
+
+  <div
+    style="border: 1px solid  #365B6D; margin:10px; padding: 6px; border-radius: 4px; width:30%; box-shadow: 6px 6px 3px 0px rgba(54,91,109,0.3);">
+    <p>Name: {{petProfileData.name}}</a></p>
+    <p>Birthyear: {{petProfileData.birthYear}}</p>
+    <p>About: {{petProfileData.description}}</p>
+  </div>
 </div>
 
-<h1>{{ petProfileData.name }}</h1>
 
 {{!-- //Signup for - always method=POST - action=/signup - name attribute for the DB - Submit button --}}
 
- {{#if user}}
-  <a class="button" href="/petprofile/{{petProfileData.id}}/edit">Edit</a>
-  {{/if}}
-
-  Name  {{petProfileData.name}}
-  Birth year {{petProfileData.birthYear}}
-
-
-
-
-  <form method="POST" action="/event/{{ eventsData._id }}/delete">
-    <a href="/event/{{ eventsData._id }}/delete">
-      <button type="submit" class="btn btn-primary">Delete</button>
-    </a>
-  </form>
+{{#if user}}
+<div style="display: flex; justify-content: space-around">
+<a class="button" href="/petprofile/{{petProfileData.id}}/edit" style="height:32px;">Edit</a>
+<form method="POST" action="/event/{{ eventsData._id }}/delete">
+  <a href="/event/{{ eventsData._id }}/delete">
+    <button type="submit" class="btn btn-primary">Delete</button>
+  </a>
+</form>
+</div>
+{{/if}}

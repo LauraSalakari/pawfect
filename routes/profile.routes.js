@@ -5,6 +5,7 @@ var bcrypt = require("bcryptjs");
 const PetProfileModel = require("../model/PetProfile.model");
 const uploader = require('../configs/cloudinary.config');
 const EventModel = require("../model/Event.model");
+const moment = require("moment");
 
 router.get("/profile", (req, res) => {
   let userData = req.session.loggedInUser;
@@ -18,8 +19,11 @@ router.get("/profile", (req, res) => {
         sort: { date: "asc" },
       });
   
-      console.log(eventsData);
-
+      eventsData.forEach((elem) => {
+        elem.time = moment(elem.createdAt).format('YYYY-MM-DD HH:mm');
+      });
+      
+      console.log(userData);
       res.render("profiles/profile", { userData, myProfile: true, petData, eventsData });
     })
     .catch((err) => {

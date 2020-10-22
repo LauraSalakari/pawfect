@@ -34,7 +34,11 @@
   </div>
 
   <br>
+  {{#if isEdit}}
   <button type="submit">Update pet profile</button>
+  {{else}}
+  <button type="submit">Create pet profile</button>
+  {{/if}}
 </form>
 
 {{#if message}}
