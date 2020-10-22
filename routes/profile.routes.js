@@ -3,6 +3,7 @@ const router = express.Router();
 const UserModel = require("../model/User.model");
 var bcrypt = require("bcryptjs");
 const PetProfileModel = require("../model/PetProfile.model");
+const uploader = require('../configs/cloudinary.config');
 
 
 router.get("/profile", (req, res) => {
@@ -39,25 +40,31 @@ router.get("/profile/edit/password", (req, res) => {
   res.render("profiles/edit-password");
 });
 
-router.get("/profile/:id/picture", (req, res) => {
-  const { id } = req.params;
+// router.get("/profile/:id/picture", (req, res) => {
+//   const { id } = req.params;
 
-  UserModel.findById(id)
-    .then((userData) => {
+//   UserModel.findById(id)
+//     .then((userData) => {
 
-      res.write(userData.avatarPicture.data);
-      res.end();
+//       res.write(userData.avatarPicture.data);
+//       res.end();
 
-    })
-    .catch((err) => {
-      console.log("There is an error", err);
-    });
-});
+//     })
+//     .catch((err) => {
+//       console.log("There is an error", err);
+//     });
+// });
 
-router.post("/profile/edit", (req, res) => {
+router.post("/profile/edit", uploader.single("imageUrl"), (req, res) => {
   let userId = req.session.loggedInUser._id;
-  UserModel.findByIdAndUpdate(userId, { $set: req.body })
-    .then((resultUser) => {
+
+  console.log('file is: ', req.file);
+  if (!req.file) {
+    next(new Error('No file uploaded!'));
+    return;
+  }
+  UserModel.findByIdAndUpdate(userId, { $set: {...req.body, avatar: req.file.path} })
+  .then((resultUser) => {
 
       //resultUser.avatarPicture.data = req.files.avatarPicture.data;
       //resultUser.avatarPicture.contentType = req.files.avatarPicture.mimetype;
