@@ -534,7 +534,7 @@ body {
 }
 
 $color_white: #fff;
-$color_prime: #5ad67d;
+$color_prime: #D0B240;
 $color_grey: #e2e2e2;
 $color_grey_dark: #a2a2a2;
 
@@ -611,6 +611,12 @@ $color_grey_dark: #a2a2a2;
       font-family: FontAwesome;
       margin-right: 10px;
       content: "\f133";
+    }
+
+    .map:before {
+      font-family: FontAwesome;
+      margin-right: 10px;
+      content: "\f278";
     }
 
     .tags {
