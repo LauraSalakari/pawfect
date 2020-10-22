@@ -32,6 +32,29 @@ a {
   color: #d0b240;
   text-decoration: none; }
 
+.avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .avatar img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 100px; }
+
+section.about {
+  margin-bottom: 32px; }
+  section.about img {
+    float: right;
+    width: 200px;
+    height: 200px;
+    border-radius: 200px;
+    object-fit: cover; }
+  section.about::after {
+    content: ' ';
+    display: block;
+    clear: both; }
+
 header {
   height: 64px;
   background: #30586e;

@@ -1,4 +1,9 @@
-<h1>PET PROFILE</h1>
+
+<div class="avatar">
+  <img src="/petprofile/{{ petProfileData._id }}/picture" alt="Pet Picture" height="100">
+  <h1>{{petProfileData.name}}</h1>
+</div>
+
 <h1>{{ petProfileData.name }}</h1>
 
 {{!-- //Signup for - always method=POST - action=/signup - name attribute for the DB - Submit button --}}
@@ -10,7 +15,6 @@
   Name  {{petProfileData.name}}
   Birth year {{petProfileData.birthYear}}
 
-  Picture <img src="/petprofile/{{ petProfileData._id }}/picture" alt="Pet Picture" height="100">
 
 
 

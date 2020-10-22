@@ -41,6 +41,7 @@ router.get("/events", (req, res) => {
         for (let eventData of eventsData) {
           // eventData.time = moment(eventData.date).format('HH:mm');
           eventData.datePretty = moment(eventData.date).format('YYYY-MM-DD');
+          eventData.hasPicture = (eventData.eventPicture && eventData.eventPicture.data);
           events.push(eventData);
         }
 
@@ -119,9 +120,11 @@ router.post("/create-event", (req, res) => {
   })
     .then((resultEvent) => {
 
-      resultEvent.eventPicture.data = req.files.eventPicture.data;
-      resultEvent.eventPicture.contentType = req.files.eventPicture.mimetype;
-      resultEvent.save();
+      if (req.files && req.files.eventPicture) {
+        resultEvent.eventPicture.data = req.files.eventPicture.data;
+        resultEvent.eventPicture.contentType = req.files.eventPicture.mimetype;
+        resultEvent.save();
+      }
 
       res.redirect("/events");
     })
@@ -240,29 +243,21 @@ router.get("/event-details/:id", async(req, res) => {
 
 
 //EVENT DETAILS
-// router.get("/event-details/:id/picture", async(req, res) => {
-//   const { id } = req.params;
 
-// <<<<<<< HEAD
-//   EventModel.findById(id)
-//     .populate("user")
-//     .then(async(eventsData) => {
-// =======
-//   EventModel.findByIdAndUpdate(id, {$push: { attendEvent: req.session.loggedInUser._id }})
-//   .then((event) => {
-    
-//     // event.time = moment(event.date).format('HH:mm');
-//     event.datePretty = moment(event.date).format('YYYY-MM-DD');
-// >>>>>>> 6e6248d01ba6723c458d32a9ee2cb70a2ac11b60
+// this makes event picture show
+router.get("/event-details/:id/picture", async(req, res) => {
+   const { id } = req.params;
 
-//       res.write(eventsData.eventPicture.data);
-//       res.end();
-
-//     })
-//     .catch((err) => {
-//       console.log("There is an error", err);
-//     });
-// });
+   EventModel.findById(id)
+     .populate("user")
+     .then(async(eventsData) => {
+       res.write(eventsData.eventPicture.data);
+       res.end();
+     })
+     .catch((err) => {
+       console.log("There is an error", err);
+     });
+});
 
 
 //REGISTER TO AN EVENT 

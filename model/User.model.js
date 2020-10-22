@@ -11,6 +11,9 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    bio: {
+      type: String
+    }, 
     location: {
       type: String,
       required: true,
@@ -19,7 +22,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    avatar: {
+    avatarPicture: {
       data: Buffer, 
       contentType: String
     }, 

@@ -21,7 +21,13 @@
   {{#each events}}
   <li>
     
-      <div class="eventPicture"><img src={{eventPicture}} alt="Event Picture" width="100" height="100"></div>
+      <div class="eventPicture">
+        {{#if hasPicture}}
+        <img src="/event-details/{{ this.id }}/picture" alt="Event Picture" height="100">
+        {{else}}
+        <img src="/images/dog-park.jpg" alt="Event Picture" height="100">
+        {{/if}}
+      </div>
       <div class="title">{{title}}</div>
       <div class="location"><span class="fas fa-map-marker"></span> {{location}}</div>
       <div class="date"><span class="fas fa-calendar"></span>{{datePretty}}</div>

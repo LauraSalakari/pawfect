@@ -106,9 +106,11 @@ router.post("/petprofile/:id/edit", (req, res) => {
   PetProfileModel.findByIdAndUpdate(id, { $set: req.body })
     .then((resultPetProfile) => {
 
-      resultPetProfile.petPicture.data = req.files.petPicture.data;
-      resultPetProfile.petPicture.contentType = req.files.petPicture.mimetype;
-      resultPetProfile.save();
+      if (req.files && req.files.petPicture) {
+        resultPetProfile.petPicture.data = req.files.petPicture.data;
+        resultPetProfile.petPicture.contentType = req.files.petPicture.mimetype;
+        resultPetProfile.save();
+      }
 
       res.redirect("/petprofile/" + id + '/edit');
     })
