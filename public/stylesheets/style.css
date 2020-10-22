@@ -296,6 +296,15 @@ body {
   background-repeat: no-repeat;
   background-position: center; }
 
+.right-create-event {
+  flex: 1;
+  background-color: black;
+  transition: 1s;
+  background-image: url("/images/DoggoPoolParty.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; }
+
 .header > h2 {
   margin: 0;
   color: #D0B240; }
