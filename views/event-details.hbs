@@ -4,11 +4,8 @@
 
   <div class="card mb-3">
 
-    {{#if hasPicture}}
+
     <img class="card-img-top" src={{ eventsData.eventPicture }} alt="Card image cap">
-    {{else}}
-    <img src="/images/dog-park.jpg" alt="Event Picture" height="100">
-    {{/if}}
 
     <div class="card-body">
       <h5 class="card-title">Type of event: {{ eventsData.type }}</h5>
@@ -61,3 +58,37 @@
     </div>
   </div>
 </article>
+
+
+
+
+{{!-- event details --}}
+<div class="blog-card">
+  <div class="meta">
+    <div class="photo" style="background-image: url({{ eventsData.eventPicture }})"></div>
+    <ul class="details">
+      <li class="author">Host: <a href="/profile/{{eventsDate.user._id}}">{{ eventsData.user.name }}</a></li>
+      <li class="date"><span class="fas fa-calendar"></span>{{ eventsData.datePretty}}</li>
+      <li class="date"><span class="fas fa-map-marker"></span>{{ eventsData.location }}</li>
+
+
+      <li class="tags">
+        <ul>
+          <li><a href="#">Learn</a></li>
+          <li><a href="#">Code</a></li>
+          <li><a href="#">HTML</a></li>
+          <li><a href="#">CSS</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="description">
+    <h1>{{ eventsData.title }}</h1>
+    <h2>Type of event: {{ eventsData.type }}</h2>
+    <h3> Event Description</h3>
+    <p>{{ eventsData.description }}</p>
+    <p class="read-more">
+      <a href="#">Read More</a>
+    </p>
+  </div>
+</div>
