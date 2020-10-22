@@ -253,22 +253,22 @@ router.get("/event-cancel-registration/:id", (req, res, next) => {
   let userId = req.session.loggedInUser._id
 
   EventModel.findById(id)
-    .then((data) => {
-      let eventData = JSON.parse(JSON.stringify(data.attendEvent))
-      console.log("eventData 1 is:", eventData)
+  .then((data) => {
+    let eventData = JSON.parse(JSON.stringify(data.attendEvent))
+    // console.log("eventData 1 is:", eventData)
 
-      let index = eventData.indexOf(userId)
-      console.log("index", index)
-      eventData.splice(index, 1)
-      console.log("eventData is:", eventData)
+    let index = eventData.indexOf(userId)
+    // console.log("index", index)
+    eventData.splice(index, 1)
+    // console.log("eventData is:", eventData)
 
-      data.time = moment(data.date).format('HH:mm');
-      data.datePretty = moment(eventsData.date).format('YYYY-MM-DD');
+    data.time = moment(data.date).format('HH:mm');
+    data.datePretty = moment(data.date).format('YYYY-MM-DD');
 
       EventModel.findByIdAndUpdate(id, { $set: { attendEvent: eventData } })
         .then(() => {
           res.render("event-cancel-registration.hbs", { data })
-        })
+        });
 
     });
 

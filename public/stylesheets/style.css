@@ -1,4 +1,5 @@
 /* reset standard browser properties that might get in the way */
+@import url("https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -10,11 +11,21 @@ ul {
 button,
 input[type="button"],
 a.button {
-  padding: 10px 12px;
-  background: #eee;
-  border: none;
+  cursor: pointer;
+  box-shadow: 0px 1px 0px 0px #365b6d;
+  background: #365b6d;
+  background-color: #365b6d;
+  border-radius: 3px;
+  border: 1px solid #365b6d;
+  display: inline-block;
+  cursor: pointer;
+  color: #e0c35c;
+  font-family: Arial;
+  font-size: 12px;
   font-weight: bold;
-  cursor: pointer; }
+  padding: 8px 14px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #365b6d; }
 
 input[type="text"],
 input[type="password"],
@@ -50,7 +61,7 @@ header {
     height: 100%; }
     header nav a {
       padding: 0 24px;
-      border-right: 1px solid #365B6D;
+      border-right: 1px solid #365b6d;
       display: flex;
       height: 100%;
       align-items: center; }
@@ -85,18 +96,58 @@ main {
   main p {
     max-width: 560px; }
 
+.card {
+  position: relative;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  width: 60%;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem; }
+
+.card-img-top {
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px); }
+
+.card-body {
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  padding: 1.25rem; }
+
+.card-title {
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem; }
+
+div.button-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 45%; }
+
+.button-section {
+  display: flex;
+  flex-direction: row;
+  margin: 20px; }
+
+.button1 {
+  margin-left: 10px;
+  margin-right: 10px; }
+
 .event-details-box {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   list-style: none;
-  margin-bottom: 40px;
   box-shadow: 0 7px 15px 6px #adabab;
   flex-grow: 1;
   flex-basis: 0%;
   width: 400px;
   border-radius: 3px;
-  padding: 24px; }
+  padding: 24px;
+  width: 60%; }
   .event-details-box span {
     width: 24px;
     height: 24px;
@@ -105,18 +156,45 @@ main {
     margin-right: 4px;
     color: #aaa; }
 
-.event-section {
+.event-description {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   list-style: none; }
-  .event-section .event-img {
-    margin-right: 30px; }
 
 .event-details-page {
   display: flex;
   flex-direction: column;
   align-items: center; }
+
+.event-details-buttons {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; }
+
+.registration-message {
+  color: #D0B240; }
+
+.now-registered, .cancel-registration {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  list-style: none;
+  box-shadow: 0 7px 15px 6px #adabab;
+  flex-grow: 1;
+  flex-basis: 0%;
+  border-radius: 3px;
+  padding: 24px;
+  width: 70%; }
+  .now-registered span, .cancel-registration span {
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    margin-right: 4px;
+    color: #aaa; }
 
 ul.upcoming-events {
   display: flex;
@@ -178,5 +256,303 @@ footer {
 
 .description-box {
   height: 200px; }
+
+* {
+  box-sizing: border-box; }
+
+body {
+  font-family: 'Rubik', sans-serif; }
+
+.container {
+  display: flex;
+  height: 100vh; }
+
+.left {
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  animation-name: left;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-delay: 1s; }
+
+.right {
+  flex: 1;
+  background-color: black;
+  transition: 1s;
+  background-image: url("/images/PUPLOGGIN.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.right-signup {
+  flex: 1;
+  background-color: black;
+  transition: 1s;
+  background-image: url("/images/doggo-woman.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.right-create-event {
+  flex: 1;
+  background-color: black;
+  transition: 1s;
+  background-image: url("/images/DoggoPoolParty.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.header > h2 {
+  margin: 0;
+  color: #D0B240; }
+
+.header > h4 {
+  margin-top: 10px;
+  font-weight: normal;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.4); }
+
+.form {
+  max-width: 80%;
+  display: flex;
+  flex-direction: column; }
+
+.form > p {
+  text-align: right; }
+
+.form > p > a {
+  color: #000;
+  font-size: 14px; }
+
+.form-field {
+  height: 46px;
+  padding: 0 16px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  font-family: 'Rubik', sans-serif;
+  outline: 0;
+  transition: .2s;
+  margin-top: 20px; }
+
+.form-field:focus {
+  border-color: #0f7ef1; }
+
+.form > button {
+  padding: 12px 10px;
+  border: 0;
+  background: linear-gradient(to right, #de48b5 0%, #0097ff 100%);
+  border-radius: 3px;
+  margin-top: 10px;
+  color: #fff;
+  letter-spacing: 1px;
+  font-family: 'Rubik', sans-serif; }
+
+.animation {
+  animation-name: move;
+  animation-duration: .4s;
+  animation-fill-mode: both;
+  animation-delay: 2s; }
+
+.a1 {
+  animation-delay: 2s; }
+
+.a2 {
+  animation-delay: 2.1s; }
+
+.a3 {
+  animation-delay: 2.2s; }
+
+.a4 {
+  animation-delay: 2.3s; }
+
+.a5 {
+  animation-delay: 2.4s; }
+
+.a6 {
+  animation-delay: 2.5s; }
+
+.a7 {
+  animation-delay: 2.6s; }
+
+.a8 {
+  animation-delay: 2.6s; }
+
+@keyframes move {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-40px); }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); } }
+
+@keyframes left {
+  0% {
+    opacity: 0;
+    width: 0; }
+  100% {
+    opacity: 1;
+    padding: 20px 40px;
+    width: 440px; } }
+
+* {
+  box-sizing: border-box; }
+
+body {
+  background: #f1f1f1;
+  margin: 2rem; }
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.6%;
+  background: #fff;
+  line-height: 1.4;
+  font-family: sans-serif;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 0; }
+  .blog-card a {
+    color: inherit; }
+    .blog-card a:hover {
+      color: #D0B240; }
+  .blog-card:hover .photo {
+    transform: scale(1.3) rotate(3deg); }
+  .blog-card .meta {
+    position: relative;
+    z-index: 0;
+    height: 200px; }
+  .blog-card .photo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform .2s; }
+  .blog-card .details,
+  .blog-card .details ul {
+    margin: auto;
+    padding: 0;
+    list-style: none; }
+  .blog-card .details {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    margin: auto;
+    transition: left .2s;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+    font-size: .9rem; }
+    .blog-card .details a {
+      text-decoration: dotted underline; }
+    .blog-card .details ul li {
+      display: inline-block; }
+    .blog-card .details .author:before {
+      font-family: FontAwesome;
+      margin-right: 10px;
+      content: "\f007"; }
+    .blog-card .details .date:before {
+      font-family: FontAwesome;
+      margin-right: 10px;
+      content: "\f133"; }
+    .blog-card .details .map:before {
+      font-family: FontAwesome;
+      margin-right: 10px;
+      content: "\f278"; }
+    .blog-card .details .tags ul:before {
+      font-family: FontAwesome;
+      content: "\f02b";
+      margin-right: 10px; }
+    .blog-card .details .tags li {
+      margin-right: 2px; }
+      .blog-card .details .tags li:first-child {
+        margin-left: -4px; }
+  .blog-card .description {
+    padding: 1rem;
+    background: #fff;
+    position: relative;
+    z-index: 1; }
+    .blog-card .description h1,
+    .blog-card .description h2 {
+      font-family: Poppins, sans-serif; }
+    .blog-card .description h1 {
+      line-height: 1;
+      margin: 0;
+      font-size: 1.7rem; }
+    .blog-card .description h2 {
+      font-size: 1rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      color: #a2a2a2;
+      margin-top: 5px; }
+    .blog-card .description .read-more {
+      text-align: right; }
+      .blog-card .description .read-more a {
+        color: #D0B240;
+        display: inline-block;
+        position: relative; }
+        .blog-card .description .read-more a:after {
+          content: "\f061";
+          font-family: FontAwesome;
+          margin-left: -10px;
+          opacity: 0;
+          vertical-align: middle;
+          transition: margin .3s, opacity .3s; }
+        .blog-card .description .read-more a:hover:after {
+          margin-left: 5px;
+          opacity: 1; }
+  .blog-card p {
+    position: relative;
+    margin: 1rem 0 0; }
+    .blog-card p:first-of-type {
+      margin-top: 1.25rem; }
+      .blog-card p:first-of-type:before {
+        content: "";
+        position: absolute;
+        height: 5px;
+        background: #D0B240;
+        width: 35px;
+        top: -0.75rem;
+        border-radius: 3px; }
+  .blog-card:hover .details {
+    left: 0%; }
+  @media (min-width: 640px) {
+    .blog-card {
+      flex-direction: row;
+      max-width: 700px; }
+      .blog-card .meta {
+        flex-basis: 40%;
+        height: auto; }
+      .blog-card .description {
+        flex-basis: 60%; }
+        .blog-card .description:before {
+          transform: skewX(-3deg);
+          content: "";
+          background: #fff;
+          width: 30px;
+          position: absolute;
+          left: -10px;
+          top: 0;
+          bottom: 0;
+          z-index: -1; }
+      .blog-card.alt {
+        flex-direction: row-reverse; }
+        .blog-card.alt .description:before {
+          left: inherit;
+          right: -10px;
+          transform: skew(3deg); }
+        .blog-card.alt .details {
+          padding-left: 25px; } }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,17 +1,17 @@
-<h1>You are now registered!</h1>
-<h2>We can't wait to see you and your fluffy best friend!</h2>
-<br>
-<h3>{{ event.title }}</h3>
-<h4>{{ event.type }}</h4>
-<ul>
-  <li>{{ event.datePretty }} - {{ event.time }} - {{ event.location }}</li>
-</ul>
-<br>
+<section class="now-registered">
 
-{{!-- <img class="event-picture"
-     src="{{ eventsData.picture }}"
-     alt= "{{ eventsData.title }} picture" > --}}
+  <h1 class="registration-message">You are now registered!</h1>
+  <h2>We can't wait to see you and your fluffy best friend!</h2>
+  <br>
+  <h3>{{ event.title }}</h3>
+  <h4>{{ event.type }}</h4>
+    <p><span class="fas fa-calendar"></span>{{ event.datePretty}}</p>
+    <p><span class="fas fa-clock"></span>{{ event.timePretty}}</p>
+    <p><span class="fas fa-map-marker"></span>{{ event.location }}</p>
+  <br>
 
-<a href="/events">
-  <button type="button" class="btn btn-primary">All Events</button>
-</a>
+
+  <a href="/events">
+    <button type="submit" class="btn btn-primary">All Events</button>
+  </a>
+</section>

@@ -20,8 +20,11 @@
 <ul class="upcoming-events">
   {{#each events}}
   <li>
-    
-      <div class="eventPicture"><img src={{eventPicture}} alt="Event Picture" width="100" height="100"></div>
+
+    {{!-- <div class="eventPicture"><img src={{eventPicture}} alt="Event Picture" width="100" height="100"></div> --}}
+
+      <img class="card-img-top" data-src="holder.js/100px180/?text=Image cap" alt="Image cap [100%x180]"
+        src={{eventPicture}} data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">
       <div class="title">{{title}}</div>
       <div class="location"><span class="fas fa-map-marker"></span> {{location}}</div>
       <div class="date"><span class="fas fa-calendar"></span>{{datePretty}}</div>
@@ -46,5 +49,5 @@
 </ul>
 
 {{#if registrationMessage}}
-  <div class="error">{{registrationMessage}}</div>
+<div class="error">{{registrationMessage}}</div>
 {{/if}}
