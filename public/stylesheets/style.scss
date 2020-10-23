@@ -827,103 +827,144 @@ $color_grey_dark: #a2a2a2;
 // profile events carrousel
 
 
-.container {
-  position: static;
-  height: 300px;
-  width: 600px;
-  top: 60px;
-  left: calc(50% - 300px);
-  display: flex;
-  margin-top: 50px;
-  margin-left: 10px;
-  // margin-right: 20px;
-}
+// .container {
+//   position: static;
+//   height: 300px;
+//   width: 600px;
+//   top: 60px;
+//   left: calc(50% - 300px);
+//   display: flex;
+//   margin-top: 50px;
+//   margin-left: 10px;
+//   // margin-right: 20px;
+// }
 
-.card {
-  display: flex;
-  height: 280px;
-  width: 200px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: -1rem 0 3rem gray;
-/*   margin-left: -50px; */
-  transition: 0.4s ease-out;
-  position: relative;
-  left: 0px;
-}
+// .card {
+//   display: flex;
+//   height: 280px;
+//   width: 200px;
+//   background-color: white;
+//   border-radius: 10px;
+//   box-shadow: -1rem 0 3rem gray;
+// /*   margin-left: -50px; */
+//   transition: 0.4s ease-out;
+//   position: relative;
+//   left: 0px;
+// }
 
-.card:not(:first-child) {
-    margin-left: -50px;
-}
+// .card:not(:first-child) {
+//     margin-left: -50px;
+// }
 
-.card:hover {
-  transform: translateY(-20px);
-  transition: 0.4s ease-out;
-}
+// .card:hover {
+//   transform: translateY(-20px);
+//   transition: 0.4s ease-out;
+// }
 
-.card:hover ~ .card {
-  position: relative;
-  left: 70px;
-  transition: 0.4s ease-out;
-}
+// .card:hover ~ .card {
+//   position: relative;
+//   left: 70px;
+//   transition: 0.4s ease-out;
+// }
 
-.title {
-  color:#D0B240;
-  font-weight: 300;
-  position: absolute;
-  left: 20px;
-  top: 15px;
-}
+// .title {
+//   color:#D0B240;
+//   font-weight: 300;
+//   position: absolute;
+//   left: 20px;
+//   top: 15px;
+// }
 
-.bar {
-  position: absolute;
-  top: 100px;
-  left: 20px;
-  height: 5px;
-  width: 150px;
-}
+// .bar {
+//   position: absolute;
+//   top: 100px;
+//   left: 20px;
+//   height: 5px;
+//   width: 150px;
+// }
 
-.emptybar {
-  background-color: #2e3033;
-  width: 100%;
-  height: 100%;
-}
+// .emptybar {
+//   background-color: #2e3033;
+//   width: 100%;
+//   height: 100%;
+// }
 
-.filledbar {
-  position: absolute;
-  top: 0px;
-  z-index: 3;
-  width: 0px;
-  height: 100%;
-  background: rgb(0,154,217);
-  background: linear-gradient(90deg, rgba(0,154,217,1) 0%, rgba(217,147,0,1) 65%, rgba(255,186,0,1) 100%);
-  transition: 0.6s ease-out;
-}
+// .filledbar {
+//   position: absolute;
+//   top: 0px;
+//   z-index: 3;
+//   width: 0px;
+//   height: 100%;
+//   background: rgb(0,154,217);
+//   background: linear-gradient(90deg, rgba(0,154,217,1) 0%, rgba(217,147,0,1) 65%, rgba(255,186,0,1) 100%);
+//   transition: 0.6s ease-out;
+// }
 
-.card:hover .filledbar {
-  width: 120px;
-  transition: 0.4s ease-out;
-}
+// .card:hover .filledbar {
+//   width: 120px;
+//   transition: 0.4s ease-out;
+// }
 
-.circle {
-  position: absolute;
-  top: 150px;
-  left: calc(50% - 80px);
-}
+// .circle {
+//   position: absolute;
+//   top: 150px;
+//   left: calc(50% - 80px);
+// }
 
-.stroke {
-  stroke: white;
-  stroke-dasharray: 360;
-  stroke-dashoffset: 360;
-  transition: 0.6s ease-out;
-}
+// .stroke {
+//   stroke: white;
+//   stroke-dasharray: 360;
+//   stroke-dashoffset: 360;
+//   transition: 0.6s ease-out;
+// }
 
-svg {
-  fill: #17141d;
-  stroke-width: 2px;
-}
+// svg {
+//   fill: #17141d;
+//   stroke-width: 2px;
+// }
 
-.card:hover .stroke {
-  stroke-dashoffset: 100;
-  transition: 0.6s ease-out;
-}
+// .card:hover .stroke {
+//   stroke-dashoffset: 100;
+//   transition: 0.6s ease-out;
+// }
+
+//people joining
+
+// .container-join {
+//   display: flex;
+//   width: 20vh;
+//   padding: 4% 2%;
+//   box-sizing: border-box;
+//   height: 30vh;
+// }
+
+// .box {
+//   flex: 1;
+//   overflow: hidden;
+//   transition: .5s;
+//   margin: 0 2%;
+//   box-shadow: 0 20px 30px rgba(0,0,0,.1);
+//   line-height: 0;
+// }
+
+// .box > img {
+//   width: 200%;
+//   height: calc(100% - 10vh);
+//   object-fit: cover; 
+//   transition: .5s;
+// }
+
+// .box > span {
+//   font-size: 3.8vh;
+//   display: block;
+//   text-align: center;
+//   height: 10vh;
+//   line-height: 2.6;
+// }
+
+// .box:hover { flex: 1 1 50%; }
+// .box:hover > img {
+//   width: 100%;
+//   height: 100%;
+// }
+ 

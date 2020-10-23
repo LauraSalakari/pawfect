@@ -47,24 +47,6 @@
 <h2 style="margin-top: 12px">Your upcoming events</h2>
 
 
-<div class="container">
-  {{#each eventsData}}
-  <div class="card">
-    <h3 class="title"><a href="/event-details/{{this._id}}">
-      <h3>{{this.title}}</h3>
-    </a></h3>
-    <div class="bar">
-      <div class="emptybar"></div>
-      <div class="filledbar"></div>
-    </div>
-    <div class="circle">
-      <p>Location: {{this.location}}</p>
-    <p>Time: {{this.time}}</p>
-    </div>
-  </div>
-  {{/each}}
-</div>
-
 
 <div>
   {{#each eventsData}}
