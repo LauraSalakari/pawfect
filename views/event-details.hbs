@@ -29,7 +29,7 @@
       {{else}}
       {{#if attendee }}
       <a href="/event-cancel-registration/{{ eventsData._id }}">
-        <button class="button1" type="button" class="btn btn-primary">Cancel Registration</button>
+        <button class="button1" type="button" class="btn btn-primary">Unjoin</button>
       </a>
       {{else}}
       <a href="/event-registration/{{ eventsData._id }}">
@@ -50,3 +50,5 @@
   <div><a href="/profile/{{this._id}}">{{this.name}}</a></div>
   {{/each}}
 </div>
+
+

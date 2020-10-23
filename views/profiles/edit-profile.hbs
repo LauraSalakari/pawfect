@@ -1,28 +1,36 @@
-<h3>Edit your profile</h3>
-
-<form method="POST" action="/profile/edit" enctype="multipart/form-data">
-  <label>Name</label>
-  <input type="text" name="name" value="{{userData.name}}" >
-  <br>
-  <label>Location</label>
-  <input type="text" name="location" value="{{userData.location}}" >
-   <br>
-
-  <div class="field">
-    <label>About me</label>
-    <div class="input">
-      <textarea value="{{userData.bio}}" class="bio-box" name="bio" cols="40"
-        rows="5"></textarea>
-    </div>
+<div class="left">
+  <div class="header">
+    <h2 class="animation a1">PAWSOME! </h2>
+    <h4 class="animation a2">You can now edit your profil</h4>
   </div>
 
-  <label>Email</label>
-  <input type="email" name="email" value="{{userData.email}}" >
-   <br>
-  <label>Change avatar</label>
-  <input type="file" name="imageUrl" accept="image/png, image/jpeg" required="true">
-  <br >
-  <button type="submit" >Edit profile</button>
-</form>
+  <div class="form">
+    <form method="POST" action="/profile/edit" enctype="multipart/form-data">
 
-<a href="/profile/edit/password">Change password</a>
+
+      <label class="animation a3">Name</label><br>
+      <input class="input-form form-field animation a3" type="text" name="name" value="{{userData.name}}">
+      <br>
+      <label class="animation a4">Location</label><br>
+      <input class="input-form form-field animation a4" type="text" name="location" value="{{userData.location}}">
+      <br>
+
+      <div>
+        <label class="animation a5">About me</label><br>
+        <div >
+          <textarea class="input-form form-field animation a5" value="{{userData.bio}}" class="bio-box" name="bio"
+            cols="40" rows="5"></textarea>
+        </div>
+      </div>
+
+      <label class="animation a6">Email</label><br>
+      <input class="input-form form-field animation a6" type="email" name="email" value="{{userData.email}}">
+      <br>
+      <label class="animation a7">Change avatar</label><br>
+      <input class="input-form animation a7" type="file" name="imageUrl" accept="image/png, image/jpeg"
+        required="true">
+      <br>
+      <button class="animation a8" type="submit">Edit profile</button>
+    </form>
+
+    <a class="animation a9" href="/profile/edit/password">Change password</a>
