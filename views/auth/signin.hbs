@@ -8,13 +8,13 @@
     <div class="form">
       <form method="POST" action="/signin">
 
-        <input name="email" type="email" class="form-field animation a3" placeholder="Email Address">
-        <input name="password" type="password" class="form-field animation a4" placeholder="Password"><br>
+        <input name="email" type="email" class="input-form form-field animation a3" placeholder="Email Address">
+        <input name="password" type="password" class="input-form form-field animation a4" placeholder="Password"><br>
         {{!-- <p class="animation a5"><a href="#">Forgot Password</a></p> --}}
         <button style= "margin-top: 20px" type="submit" class="animation a6">Sign In</button>
       </form>
     </div>
-    <p>Dont have an account yet? <a href="/signup">Create one, it's free!</a></p>
+    <p class="animation a7">Dont have an account yet? <a href="/signup">Create one, it's free!</a></p>
     {{#if message}}
     <div class="error">{{message}}</div>
     {{/if}}

@@ -45,6 +45,27 @@
 </ul> --}}
 
 <h2 style="margin-top: 12px">Your upcoming events</h2>
+
+
+<div class="container">
+  {{#each eventsData}}
+  <div class="card">
+    <h3 class="title"><a href="/event-details/{{this._id}}">
+      <h3>{{this.title}}</h3>
+    </a></h3>
+    <div class="bar">
+      <div class="emptybar"></div>
+      <div class="filledbar"></div>
+    </div>
+    <div class="circle">
+      <p>Location: {{this.location}}</p>
+    <p>Time: {{this.time}}</p>
+    </div>
+  </div>
+  {{/each}}
+</div>
+
+
 <div>
   {{#each eventsData}}
   <div
@@ -58,8 +79,13 @@
   {{/each}}
 </div>
 
+
+
 <div class="btn-profile">
   <button class="edit-petprofile"><a href="/profile/edit">Edit Profile</a></button>
   <button class="create-petprofile"><a href="/petprofile/create">Add a Pet!</a></button>
 </div>
 {{/unless}}
+
+
+
