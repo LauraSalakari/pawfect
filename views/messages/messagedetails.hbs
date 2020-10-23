@@ -2,16 +2,11 @@
   <p><b>From:</b> <a href="/profile/{{data.sender._id}}">{{data.sender.name}}</a></p>
   <p><b>To:</b> <a href="/profile/{{data.recipient._id}}">{{data.recipient.name}}</a></p>
   <p style="margin-top: 15px">Message:</p>
-  <p style="color:gray; text-align: right">{{data.createdAt}}</p>
   <div style="border: 0.5px solid #D0B23F; padding:10px">
     {{data.content}}
   </div>
+  <p style="color:gray">{{data.time}}</p>
 
-  {{!-- <p>
-{{#if data.previous}}
-  <a href="/messages/{{data.previous}}">Previous message</a>
-{{/if}}
-</p> --}}
 
   {{#if notUser}}
   <p>

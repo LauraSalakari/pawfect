@@ -20,10 +20,9 @@
 <ul class="upcoming-events">
   {{#each events}}
   <li>
-    
       <div class="eventPicture">
-        {{#if hasPicture}}
-        <img src="/event-details/{{ this.id }}/picture" alt="Event Picture" height="100">
+        {{#if this.eventPicture}}
+        <img src={{this.eventPicture}} alt="Event Picture" height="100">
         {{else}}
         <img src="/images/dog-park.jpg" alt="Event Picture" height="100">
         {{/if}}
