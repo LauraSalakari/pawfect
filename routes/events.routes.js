@@ -22,7 +22,8 @@ router.get("/events", (req, res) => {
     sort: { date: "asc" },
   })
     .then((eventsData) => {
-
+      let noneFound = false;
+      if(eventsData.length == 0) noneFound = true;
       let events = [];
       for (let eventData of eventsData) {
         eventData.datePretty = moment(eventData.date).format('YYYY-MM-DD');
@@ -30,7 +31,8 @@ router.get("/events", (req, res) => {
         events.push(eventData);
       }
 
-      res.render("events.hbs", { events: events });
+      
+      res.render("events.hbs", { events: events, noneFound });
     })
     .catch((err) => {
       console.log(err);

@@ -62,7 +62,7 @@ section.about {
     border-radius: 200px;
     object-fit: cover; }
   section.about::after {
-    content: ' ';
+    content: " ";
     display: block;
     clear: both; }
 
@@ -198,9 +198,10 @@ div.button-section {
   justify-content: center; }
 
 .registration-message {
-  color: #D0B240; }
+  color: #d0b240; }
 
-.now-registered, .cancel-registration {
+.now-registered,
+.cancel-registration {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -211,7 +212,8 @@ div.button-section {
   border-radius: 3px;
   padding: 24px;
   width: 70%; }
-  .now-registered span, .cancel-registration span {
+  .now-registered span,
+  .cancel-registration span {
     width: 24px;
     height: 24px;
     line-height: 24px;
@@ -284,7 +286,7 @@ footer {
   box-sizing: border-box; }
 
 body {
-  font-family: 'Rubik', sans-serif; }
+  font-family: "Rubik", sans-serif; }
 
 .container {
   display: flex;
@@ -330,7 +332,7 @@ body {
 
 .header > h2 {
   margin: 0;
-  color: #D0B240; }
+  color: #d0b240; }
 
 .header > h4 {
   margin-top: 10px;
@@ -355,9 +357,9 @@ body {
   padding: 0 16px;
   border: 2px solid #ddd;
   border-radius: 4px;
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
   outline: 0;
-  transition: .2s;
+  transition: 0.2s;
   margin-top: 20px; }
 
 .form-field:focus {
@@ -371,11 +373,11 @@ body {
   margin-top: 10px;
   color: #fff;
   letter-spacing: 1px;
-  font-family: 'Rubik', sans-serif; }
+  font-family: "Rubik", sans-serif; }
 
 .animation {
   animation-name: move;
-  animation-duration: .4s;
+  animation-duration: 0.4s;
   animation-fill-mode: both;
   animation-delay: 2s; }
 
@@ -444,7 +446,7 @@ body {
   .blog-card a {
     color: inherit; }
     .blog-card a:hover {
-      color: #D0B240; }
+      color: #d0b240; }
   .blog-card:hover .photo {
     transform: scale(1.3) rotate(3deg); }
   .blog-card .meta {
@@ -459,7 +461,7 @@ body {
     left: 0;
     background-size: cover;
     background-position: center;
-    transition: transform .2s; }
+    transition: transform 0.2s; }
   .blog-card .details,
   .blog-card .details ul {
     margin: auto;
@@ -471,12 +473,12 @@ body {
     bottom: 0;
     left: -100%;
     margin: auto;
-    transition: left .2s;
+    transition: left 0.2s;
     background: rgba(0, 0, 0, 0.6);
     color: #fff;
     padding: 10px;
     width: 100%;
-    font-size: .9rem; }
+    font-size: 0.9rem; }
     .blog-card .details a {
       text-decoration: dotted underline; }
     .blog-card .details ul li {
@@ -522,7 +524,7 @@ body {
     .blog-card .description .read-more {
       text-align: right; }
       .blog-card .description .read-more a {
-        color: #D0B240;
+        color: #d0b240;
         display: inline-block;
         position: relative; }
         .blog-card .description .read-more a:after {
@@ -531,7 +533,7 @@ body {
           margin-left: -10px;
           opacity: 0;
           vertical-align: middle;
-          transition: margin .3s, opacity .3s; }
+          transition: margin 0.3s, opacity 0.3s; }
         .blog-card .description .read-more a:hover:after {
           margin-left: 5px;
           opacity: 1; }
@@ -544,7 +546,7 @@ body {
         content: "";
         position: absolute;
         height: 5px;
-        background: #D0B240;
+        background: #d0b240;
         width: 35px;
         top: -0.75rem;
         border-radius: 3px; }

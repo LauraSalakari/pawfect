@@ -18,24 +18,21 @@ a.button {
   // font-weight: bold;
   cursor: pointer;
 
-    box-shadow: 0px 1px 0px 0px #365b6d;
-    background: #365b6d;
-    background-color:#365b6d;
-    border-radius:3px;
-    border:1px solid #365b6d;
-    display:inline-block;
-    cursor:pointer;
-    color:#e0c35c;
-    font-family:Arial;
-    font-size:12px;
-    font-weight:bold;
-    padding:8px 14px;
-    text-decoration:none;
-    text-shadow:0px 1px 0px #365b6d;
-  }
-  
-  
-
+  box-shadow: 0px 1px 0px 0px #365b6d;
+  background: #365b6d;
+  background-color: #365b6d;
+  border-radius: 3px;
+  border: 1px solid #365b6d;
+  display: inline-block;
+  cursor: pointer;
+  color: #e0c35c;
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 8px 14px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #365b6d;
+}
 
 input[type="text"],
 input[type="password"],
@@ -74,16 +71,14 @@ section.about {
 
   img {
     float: right;
-    width:200px;
+    width: 200px;
     height: 200px;
     border-radius: 200px;
     object-fit: cover;
-
-
   }
-  
+
   &::after {
-    content: ' ';
+    content: " ";
     display: block;
     clear: both;
   }
@@ -257,7 +252,7 @@ div.button-section {
 }
 
 .event-details-buttons {
-  margin-top: 50px; 
+  margin-top: 50px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -269,9 +264,10 @@ div.button-section {
 //You are now registered
 
 .registration-message {
-  color: #D0B240;
+  color: #d0b240;
 }
-.now-registered, .cancel-registration {
+.now-registered,
+.cancel-registration {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -283,7 +279,6 @@ div.button-section {
   padding: 24px;
   width: 70%;
 
-
   span {
     width: 24px;
     height: 24px;
@@ -293,7 +288,6 @@ div.button-section {
     color: #aaa;
   }
 }
-
 
 ul.upcoming-events {
   display: flex;
@@ -374,16 +368,15 @@ footer {
   height: 200px;
 }
 
+///SIGNIN SINGUP CREATE EVENT CSS FORM
 
-
-///SIGNIN SINGUP CREATE EVENT CSS FORM 
-
-* { box-sizing: border-box; }
-@import url('https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap');
-
+* {
+  box-sizing: border-box;
+}
+@import url("https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap");
 
 body {
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
 }
 
 .container {
@@ -433,17 +426,16 @@ body {
   background-position: center;
 }
 
-
 .header > h2 {
   margin: 0;
-  color: #D0B240;
+  color: #d0b240;
 }
 
 .header > h4 {
   margin-top: 10px;
   font-weight: normal;
   font-size: 15px;
-  color: rgba(0,0,0,.4);
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .form {
@@ -466,9 +458,9 @@ body {
   padding: 0 16px;
   border: 2px solid #ddd;
   border-radius: 4px;
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
   outline: 0;
-  transition: .2s;
+  transition: 0.2s;
   margin-top: 20px;
 }
 
@@ -479,17 +471,17 @@ body {
 .form > button {
   padding: 12px 10px;
   border: 0;
-  background: linear-gradient(to right, #de48b5 0%,#0097ff 100%); 
+  background: linear-gradient(to right, #de48b5 0%, #0097ff 100%);
   border-radius: 3px;
   margin-top: 10px;
   color: #fff;
   letter-spacing: 1px;
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
 }
 
 .animation {
   animation-name: move;
-  animation-duration: .4s;
+  animation-duration: 0.4s;
   animation-fill-mode: both;
   animation-delay: 2s;
 }
@@ -553,9 +545,7 @@ body {
   }
 }
 
-
-// EVENT DETAILS 
-
+// EVENT DETAILS
 
 * {
   box-sizing: border-box;
@@ -567,7 +557,7 @@ body {
 }
 
 $color_white: #fff;
-$color_prime: #D0B240;
+$color_prime: #d0b240;
 $color_grey: #e2e2e2;
 $color_grey_dark: #a2a2a2;
 
@@ -575,7 +565,7 @@ $color_grey_dark: #a2a2a2;
   display: flex;
   flex-direction: column;
   margin: 1rem auto;
-  box-shadow: 0 3px 7px -1px rgba(#000, .1);
+  box-shadow: 0 3px 7px -1px rgba(#000, 0.1);
   margin-bottom: 1.6%;
   background: $color_white;
   line-height: 1.4;
@@ -607,7 +597,7 @@ $color_grey_dark: #a2a2a2;
     left: 0;
     background-size: cover;
     background-position: center;
-    transition: transform .2s;
+    transition: transform 0.2s;
   }
   .details,
   .details ul {
@@ -622,14 +612,14 @@ $color_grey_dark: #a2a2a2;
     bottom: 0;
     left: -100%;
     margin: auto;
-    transition: left .2s;
-    background: rgba(#000, .6);
+    transition: left 0.2s;
+    background: rgba(#000, 0.6);
     color: $color_white;
     padding: 10px;
     width: 100%;
-    font-size: .9rem;
+    font-size: 0.9rem;
     a {
-      text-decoration: dotted underline
+      text-decoration: dotted underline;
     }
     ul li {
       display: inline-block;
@@ -699,7 +689,7 @@ $color_grey_dark: #a2a2a2;
           margin-left: -10px;
           opacity: 0;
           vertical-align: middle;
-          transition: margin .3s, opacity .3s;
+          transition: margin 0.3s, opacity 0.3s;
         }
 
         &:hover:after {
@@ -731,7 +721,6 @@ $color_grey_dark: #a2a2a2;
     }
   }
 
-
   @media (min-width: 640px) {
     flex-direction: row;
     max-width: 700px;
@@ -759,7 +748,7 @@ $color_grey_dark: #a2a2a2;
         &:before {
           left: inherit;
           right: -10px;
-          transform: skew(3deg)
+          transform: skew(3deg);
         }
       }
       .details {

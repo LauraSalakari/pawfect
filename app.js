@@ -62,6 +62,11 @@ app.use(session({
 // default value for title local
 app.locals.title = 'Meet Pup';
 
+// to keep the user logged out!!
+app.use(function(req, res, next) {
+  res.set('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+  next();
+});
 
 const apiRoutes = require("./routes/api.routes");
 app.use("/", apiRoutes);

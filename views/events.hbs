@@ -2,7 +2,7 @@
 <h1>Upcoming events</h1>
 
 <div>
-  <b>Filter the events</b>
+  <b style="color:#365B6D; margin-bottom:6px">Filter events</b>
   <form method="GET" action="/events">
     <input type="checkbox" name="Active">
     <label for="Active">Active</label>
@@ -12,26 +12,29 @@
     <label for="Relaxed meetup">Relaxed meetup</label>
     <input type="checkbox" name="Socialization">
     <label for="Socialization">Socialization</label>
-    <br/>
-    <button type="submit">Filter</button>
+    <br />
+    <button type="submit" style="margin-top: 6px;">Filter</button>
   </form>
 </div>
 
+{{#if noneFound}}
+<h3>No events match your search, please try filtering again or view <a href="/events">all events</a></h3>
+{{else}}
 <ul class="upcoming-events">
   {{#each events}}
   <li>
-      <div class="eventPicture">
-        {{#if this.eventPicture}}
-        <img src={{this.eventPicture}} alt="Event Picture" height="100">
-        {{else}}
-        <img src="/images/dog-park.jpg" alt="Event Picture" height="100">
-        {{/if}}
-      </div>
-      <div class="title">{{title}}</div>
-      <div class="location"><span class="fas fa-map-marker"></span> {{location}}</div>
-      <div class="date"><span class="fas fa-calendar"></span>{{datePretty}}</div>
-      <div class="time"><span class="fas fa-clock"></span>{{time}}</div>
-      <div class="type"><span class="fas fa-question"></span>{{type}}</div>
+    <div class="eventPicture">
+      {{#if this.eventPicture}}
+      <img src={{this.eventPicture}} alt="Event Picture" height="100">
+      {{else}}
+      <img src="/images/dog-park.jpg" alt="Event Picture" height="100">
+      {{/if}}
+    </div>
+    <div class="title">{{title}}</div>
+    <div class="location"><span class="fas fa-map-marker"></span> {{location}}</div>
+    <div class="date"><span class="fas fa-calendar"></span>{{datePretty}}</div>
+    <div class="time"><span class="fas fa-clock"></span>{{time}}</div>
+    <div class="type"><span class="fas fa-question"></span>{{type}}</div>
 
 
     <a class="event more-info-button button-section" href="/event-details/{{ this.id }}">
@@ -52,4 +55,5 @@
 
 {{#if registrationMessage}}
 <div class="error">{{registrationMessage}}</div>
+{{/if}}
 {{/if}}

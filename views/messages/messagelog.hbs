@@ -35,6 +35,11 @@
       border: 1px solid #ccc;
       border-top: none;
     }
+
+    h3 {
+      box-shadow: 0px 0px 0px 0px #365b6d;
+      text-shadow: 0px 0px 0px 0px #365b6d;
+    }
   </style>
 </head>
 
@@ -48,10 +53,10 @@
 
 <!-- Tab content -->
 <div id="Received" class="tabcontent">
-  <h3>Received</h3>
+  <h3 >Received</h3>
   {{#each received}}
     <a href="/messages/{{this._id}}" style="cursor: pointer">
-      <div style="border: 0.5px solid black; margin: 5px; padding: 5px>
+      <div style="border: 0.5px solid black; margin: 5px; padding: 5px">
         <b>From:</b> {{this.sender.name}}
         <br/>
         {{this.time}}
@@ -61,7 +66,7 @@
 </div>
 
 <div id="Sent" class="tabcontent">
-  <h3>Sent</h3>
+  <h3 class="log-tab-h3">Sent</h3>
   <div>
     {{#each sent}}
     <a href="/messages/{{this._id}}" style="cursor: pointer">
