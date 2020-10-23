@@ -212,12 +212,10 @@ EventModel
 
 The url to your repository and to your deployed project
 
-[Repository Link](http://github.com)
+[Repository Link](https://github.com/LauraSalakari/pawfect)
 
-[Deploy Link](http://heroku.com)
+[Deploy Link](https://meet-pup.herokuapp.com/)
 
 ### Slides
 
-The url to your presentation slides
-
-[Slides Link](http://slides.com)
+[Slides Link](https://docs.google.com/presentation/d/1MShwMFqaZzvGfOqGtutZwuecXpXQXtdJn1HBcACC-nw/edit?usp=sharing)
