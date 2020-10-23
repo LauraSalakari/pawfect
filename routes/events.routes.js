@@ -23,72 +23,33 @@ router.get("/create-event", (req, res) => {
 });
 
 router.get("/events", (req, res) => {
-  console.log(req.query);
+
   let dbQuery = [];
-  // if (req.query) {
-    if(req.query){
-      dbQuery = Object.keys(req.query);
-    }
-    if(dbQuery == []) dbQuery = ["Active", "Training", "Relaxed meetup", "Socialization"];
-    EventModel.find({ $and: [{ date: { $gte: new Date() }, type: { $in: dbQuery } }] }, null, {
-      sort: { date: "asc" },
+  if (req.query) {
+    dbQuery = Object.keys(req.query);
+  }
+  if (dbQuery.length == 0) dbQuery = ["Active", "Training", "Relaxed meetup", "Socialization"];
+
+  EventModel.find({ $and: [{ date: { $gte: new Date() }, type: { $in: dbQuery } }] }, null, {
+    sort: { date: "asc" },
+  })
+    .then((eventsData) => {
+
+      let events = [];
+      for (let eventData of eventsData) {
+        eventData.datePretty = moment(eventData.date).format('YYYY-MM-DD');
+        eventData.hasPicture = (eventData.eventPicture && eventData.eventPicture.data);
+        events.push(eventData);
+      }
+
+      res.render("events.hbs", { events: events });
     })
-      .then((eventsData) => {
-        // console.log("req.session.loggedInUser._id is: ", req.session.loggedInUser._id)
-        // console.log("eventsData[0].user is: ", eventsData[0].user);
-
-        let events = [];
-        for (let eventData of eventsData) {
-          // eventData.time = moment(eventData.date).format('HH:mm');
-          eventData.datePretty = moment(eventData.date).format('YYYY-MM-DD');
-          eventData.hasPicture = (eventData.eventPicture && eventData.eventPicture.data);
-          events.push(eventData);
-        }
-
-        // console.log(events);
-
-        res.render("events.hbs", { events: events });
-
-      })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).render("auth/signin.hbs", {
-          //redirect to somewhereelse
-          message: "Fail to fetch user information",
-        });
+    .catch((err) => {
+      console.log(err);
+      res.status(500).render("auth/signin.hbs", {
+        message: "Fail to fetch user information",
       });
-  // }
-
-  // else {
-  //   EventModel.find({ date: { $gte: new Date() } }, null, {
-  //     sort: { date: "asc" },
-  //   })
-  //     .then((eventsData) => {
-  //       // console.log("req.session.loggedInUser._id is: ", req.session.loggedInUser._id)
-  //       // console.log("eventsData[0].user is: ", eventsData[0].user);
-
-  //       let events = [];
-  //       for (let eventData of eventsData) {
-  //         eventData.time = moment(eventData.date).format('HH:mm');
-  //         eventData.datePretty = moment(eventData.date).format('YYYY-MM-DD');
-  //         events.push(eventData);
-  //       }
-
-  //       // console.log(events);
-
-  //       res.render("events.hbs", { events: events });
-
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       res.status(500).render("auth/signin.hbs", {
-  //         //redirect to somewhereelse
-  //         message: "Fail to fetch user information",
-  //       });
-  //     });
-  // }
-
-
+    });
 });
 
 router.post("/create-event", (req, res) => {
@@ -190,14 +151,14 @@ router.post("/event/:id/delete", (req, res, next) => {
 });
 
 //EVENT DETAILS
-router.get("/event-details/:id", async(req, res) => {
+router.get("/event-details/:id", async (req, res) => {
   const { id } = req.params;
 
   //console.log(usersData);
 
   EventModel.findById(id)
     .populate("user")
-    .then(async(eventsData) => {
+    .then(async (eventsData) => {
       // console.log("THIS IS EVENT DATA", eventsData);
       // console.log(`THIS IS ${eventsData.user} DETAILS`);
       //console.log(req.session.loggedInUser._id === eventsData.user._id)
@@ -207,11 +168,11 @@ router.get("/event-details/:id", async(req, res) => {
         creator = (JSON.stringify(req.session.loggedInUser._id) ===
           JSON.stringify(eventsData.user._id))
       }
-      
-      
-        // eventsData.time = moment(eventsData.time).format('HH:mm');
-        eventsData.datePretty = moment(eventsData.date).format('YYYY-MM-DD');
-       
+
+
+      // eventsData.time = moment(eventsData.time).format('HH:mm');
+      eventsData.datePretty = moment(eventsData.date).format('YYYY-MM-DD');
+
 
       console.log(eventsData.attendEvent);
 
@@ -219,7 +180,7 @@ router.get("/event-details/:id", async(req, res) => {
         sort: { date: "asc" },
       });
 
-      let attendee = false; 
+      let attendee = false;
 
       for (let i = 0; i < eventsData.attendEvent.length; i++) {
         if (JSON.stringify(eventsData.attendEvent[i]) === JSON.stringify(req.session.loggedInUser._id)) {
@@ -288,22 +249,22 @@ router.get("/event-cancel-registration/:id", (req, res, next) => {
   EventModel.findById(id)
   .then((data) => {
     let eventData = JSON.parse(JSON.stringify(data.attendEvent))
-    console.log("eventData 1 is:", eventData)
+    // console.log("eventData 1 is:", eventData)
 
     let index = eventData.indexOf(userId)
-    console.log("index", index)
+    // console.log("index", index)
     eventData.splice(index, 1)
-    console.log("eventData is:", eventData)
+    // console.log("eventData is:", eventData)
 
     data.time = moment(data.date).format('HH:mm');
-    data.datePretty = moment(eventsData.date).format('YYYY-MM-DD');
+    data.datePretty = moment(data.date).format('YYYY-MM-DD');
 
-    EventModel.findByIdAndUpdate(id, {$set: {attendEvent: eventData}})
-    .then(() => {
-      res.render("event-cancel-registration.hbs", { data })
-    })
+      EventModel.findByIdAndUpdate(id, { $set: { attendEvent: eventData } })
+        .then(() => {
+          res.render("event-cancel-registration.hbs", { data })
+        });
 
-});
+    });
 
 });
 

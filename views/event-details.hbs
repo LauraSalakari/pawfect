@@ -1,99 +1,52 @@
-<article class='event-details-page'>
-<h1>{{ eventsData.title }}</h1>
-{{!-- <h2>{{ eventsData.type }}</h2> --}}
-<ul>
-  {{!-- <li>{{ eventsData.datePretty }} - {{ eventsData.location }}</li> --}}
-</ul>
-{{!-- User: {{ eventsData.user.name }} --}}
-<br>
-{{!-- People joining: 
-{{#each attendeesData}}
-<div><a href="/profile/{{this._id}}">{{this.name}}</a></div>
-{{/each}} --}}
-{{!-- <<h2>Event Description</h2>
-<p>{{ eventsData.description }} </p>
-<br>
-{{#if eventsData.eventPicture}}
-<img src="/event-details/{{ eventsData._id }}/picture" alt="Event Picture" height="100">
-{{/if}} --}}
-
-<br>
-{{!-- <h4>TODO For Event Details</h4>
-<ul>
-  <li>Add a picture of the event</li>
-  <li>Add the max number of dogs accepted</li>
-  <li>Change time format</li>
-  <li>Add a link to the creator of the event!</li>
-</ul> --}}
-<br>
-
-<section class="event-details-box">
-<h2>Type of event: {{ eventsData.type }}</h2>
-<h4>Host: <a href="/profile/{{eventsDate.user._id}}">{{ eventsData.user.name }}</a> </h4>
-<p><span class="fas fa-calendar"></span>{{ eventsData.datePretty}} - <span class="fas fa-clock"></span>{{ eventsData.time}} - <span class="fas fa-map-marker"></span>{{ eventsData.location }}</p>
-</section>
-
-People joining: 
-{{#each attendeesData}}
-<div><a href="/profile/{{this._id}}">{{this.name}}</a></div>
-{{/each}}
-
-<section class="event-section">
-  {{#if eventsData.eventPicture}}
-<div class="event-img">
-<img src="/event-details/{{ eventsData._id }}/picture" alt="Event Picture" height="100">
-</div>
-{{/if}}
-<div class="event-description" ><h2>Event Description</h2>
-<p>{{ eventsData.description }} </p>
-</div>
-</section>
-
-<div class="button-section">
-  
-  {{#if user }}
-  <a href="/event/{{ eventsData._id }}/edit">
-    <button type="submit" class="btn btn-primary">Edit</button>
-  </a>
-
-  <form method="POST" action="/event/{{ eventsData._id }}/delete">
-    <a href="/event/{{ eventsData._id }}/delete">
-      <button type="submit" class="btn btn-primary">Delete</button>
-    </a>
-  </form>
-
-  {{else}}
-
-  {{#if attendee }}
-  <a href="/event-cancel-registration/{{ eventsData._id }}">
-    <button type="button" class="btn btn-primary">Cancel Registration</button>
-  </a>
-  {{else}}
-  <a href="/event-registration/{{ eventsData._id }}">
-    <button type="button" class="btn btn-primary">Register Now</button>
-  </a>
-  {{/if}}
-
-  {{/if}}
-
-  <a href="/events">
-    <button type="submit" class="btn btn-primary">All Events</button>
-  </a>
-</div>
-</article>
-
-
-{{!-- <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Info card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+{{!-- event details --}}
+<div class="blog-card">
+  <div class="meta">
+    <div class="photo" style="background-image: url({{ eventsData.eventPicture }})"></div>
+    <ul class="details">
+      <li class="author">Host: <a href="/profile/{{eventsData.user._id}}">{{ eventsData.user.name }}</a></li>
+      <li class="date">{{ eventsData.datePretty}} - {{ eventsData.time}}</li>
+      <li class="map"></span>{{ eventsData.location }}</li>
+    </ul>
   </div>
-</div> --}}
+  <div class="description">
+    <h1>{{ eventsData.title }}</h1>
+    <h2>Type of event: {{ eventsData.type }}</h2>
+    <h3> Event Description</h3>
+    <p>{{ eventsData.description }}</p>
+    <p class="read-more">
+    <div class="button-section">
+      {{#if user }}
+      <a href="/event/{{ eventsData._id }}/edit">
+        <button class="button1" type="submit" class="btn btn-primary">Edit</button>
+      </a>
 
+      <form method="POST" action="/event/{{ eventsData._id }}/delete">
+        <a href="/event/{{ eventsData._id }}/delete"></a>
+        <button class="button1" type="submit" class="btn btn-primary">Delete</button>
+        </a>
+      </form>
 
-
-
-
-
-
+      {{else}}
+      {{#if attendee }}
+      <a href="/event-cancel-registration/{{ eventsData._id }}">
+        <button class="button1" type="button" class="btn btn-primary">Cancel Registration</button>
+      </a>
+      {{else}}
+      <a href="/event-registration/{{ eventsData._id }}">
+        <button class="button1" type="button" class="btn btn-primary">Register</button>
+      </a>
+      {{/if}}
+      {{/if}}
+      <a href="/events">
+        <button class="button1" type="button" class="btn btn-primary">Events</button>
+      </a>
+    </div>
+    </p>
+  </div>
+</div>
+<div>
+  People joining:
+  {{#each attendeesData}}
+  <div><a href="/profile/{{this._id}}">{{this.name}}</a></div>
+  {{/each}}
+</div>
