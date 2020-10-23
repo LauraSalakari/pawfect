@@ -8,7 +8,7 @@
     </div>
 
     <div class="form">
-      <form method="POST" action="/create-event">
+      <form method="POST" action="/create-event" enctype="multipart/form-data">
 
         <label class="animation a3">Title</label><br>
         <input type="text" name="title" class="input-form form-field animation a3" placeholder="Title of event"><br>
@@ -33,13 +33,12 @@
         </select><br>
 
         <label class="animation a8">Description</label><br>
-        <textarea name="description" class="input-form form-field animation a8" placeholder="Description of event"
-          cols="40" rows="5"></textarea><br>
+        <textarea name="description" class="input-form form-field animation a8" placeholder="Description of event" cols="40"
+          rows="5"></textarea><br>
         <label class="animation a9" for="avatar">Choose a event picture</label><br>
-        <input type="url" id="downloadeventpic" name="eventPicture" class="input-form form-field animation a9"
-          accept="image/png, image/jpeg">
+        <input class="input-form animation a9" type="file" name="imageUrl" accept="image/png, image/jpeg" required="true">
         <br>
-        <button type="submit">Create event</button>
+        <button class="animation a9" type="submit">Create event</button>
       </form>
     </div>
     {{#if message}}

@@ -608,7 +608,8 @@ body {
   padding: 24px; }
 
 .btn-profile {
-  margin-top: 20px; }
+  margin-top: 20px;
+  margin-left: 10px; }
 
 .edit-petprofile {
   margin-right: 10px; }

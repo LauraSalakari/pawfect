@@ -51,10 +51,10 @@
   <h3>Received</h3>
   {{#each received}}
     <a href="/messages/{{this._id}}" style="cursor: pointer">
-      <div style="border: 0.5px solid black; margin: 5px; padding: 5px">
+      <div style="border: 0.5px solid black; margin: 5px; padding: 5px>
         <b>From:</b> {{this.sender.name}}
         <br/>
-        {{this.createdAt}}
+        {{this.time}}
       </div>
     </a>
     {{/each}}
@@ -68,7 +68,7 @@
       <div style="border: 0.5px solid black; margin: 5px; padding: 5px">
         <b>To:</b> {{this.recipient.name}}
         <br/>
-        {{this.createdAt}}
+        {{this.time}}
       </div>
     </a>
     {{/each}}

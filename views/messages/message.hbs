@@ -1,12 +1,23 @@
 <h1>Send a Message</h1>
 
 <form method="POST" action="/messages/send/{{data._id}}">
-  <label for="recipient">Recipient:</label>
-  <input type="text" name="recipient" readonly="true" value="{{data.name}}">
-  <br/>
-  <label for="content">Message</label>
-  <textarea name="content" required="true" rows="5" placeholder="Write your message here! Remember to be paw-some!"></textarea>
-  <br/>
+
+
+  <div class="form-group">
+    <label for="recipient" style="color: #365B6D">Recipient</label>
+    <br />
+    <h3><a href="/profiles/{{data._id}}"><b>{{data.name}}</b></a></h3>
+    {{!-- <input type="text" class="form-control-plaintext" id="recipient" readonly="true" value="{{data.name}}"
+      style="outline:none"> --}}
+  </div>
+  <br />
+  <div class="form-group">
+    <label for="message-content" style="color: #365B6D">Message</label>
+    <br />
+    <textarea class="form-control" id="message-content" name="content" required="true" rows="5" cols="50"
+      placeholder="Remember to be paw-some!" style="outline:none; resize: none"></textarea>
+  </div>
+  <br />
   <button type="submit">Send</button>
 </form>
 

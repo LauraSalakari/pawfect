@@ -2,21 +2,9 @@ const express = require("express");
 const moment = require("moment");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
-const fs = require('fs');
-
+const uploader = require('../configs/cloudinary.config');
 const UserModel = require("../model/User.model");
 const EventModel = require("../model/Event.model");
-
-//EVENTS
-// router.use((req, res, next) => {
-//   if (req.session.loggedInUser) {
-//     // if there's user in the session (user is logged in)
-//     next();
-//   } else {
-//     res.redirect("/login");
-//   }
-// });
-
 
 router.get("/create-event", (req, res) => {
   res.render("create-event.hbs");
@@ -52,9 +40,14 @@ router.get("/events", (req, res) => {
     });
 });
 
-router.post("/create-event", (req, res) => {
+router.post("/create-event", uploader.single("imageUrl"), (req, res) => {
   const { title, location, date, time, type, description, eventPicture } = req.body;
-  console.log(req.body)
+
+  // console.log('file is: ', req.file);
+  if (!req.file) {
+    next(new Error('No file uploaded!'));
+    return;
+  }
 
   if (!title || !location || !date || !time || !type) {
     res.status(500).render("create-event.hbs", {
@@ -76,35 +69,26 @@ router.post("/create-event", (req, res) => {
   EventModel.create({
     ...req.body,
     user: newUser,
-    attendEvent: newUser
+    attendEvent: newUser,
+    eventPicture: req.file.path
     // attendEvent: [ mongoose.Schema.Types.ObjectId ]
   })
     .then((resultEvent) => {
 
-      if (req.files && req.files.eventPicture) {
-        resultEvent.eventPicture.data = req.files.eventPicture.data;
-        resultEvent.eventPicture.contentType = req.files.eventPicture.mimetype;
-        resultEvent.save();
-      }
+      // if (req.files && req.files.eventPicture) {
+      //   resultEvent.eventPicture.data = req.files.eventPicture.data;
+      //   resultEvent.eventPicture.contentType = req.files.eventPicture.mimetype;
+      //   resultEvent.save();
+      // }
 
       res.redirect("/events");
     })
     .catch((err) => {
-      console.log("Failled to create event in DB", err);
+      console.log("Failed to create event in DB", err);
     });
 
   //res.render("create-event.hbs");
 });
-
-
-// router.use((req, res, next) => {
-//   if (req.session.currentUser) {
-//     // if there's user in the session user is logged in
-//     next();
-//   } else {
-//     res.redirect("/signin");
-//   }
-// });
 
 
 //EDIT EVENT
@@ -124,11 +108,18 @@ router.get("/event/:id/edit", (req, res, next) => {
 });
 
 // POST route to update the event element with the info updated in the form view
-router.post("/event/:id/edit", (req, res, next) => {
+router.post("/event/:id/edit", uploader.single("imageUrl"), (req, res, next) => {
   const { id } = req.params;
+  // console.log('file is: ', req.file);
+  if (!req.file) {
+    next(new Error('No file uploaded!'));
+    return;
+  }
+  let edit = req.body;
+  edit.eventPicture = req.file.path;
 
   // findByIdAndUpdate will use the information passed from the request body (create event form) to update the event
-  EventModel.findByIdAndUpdate(id, { $set: req.body })
+  EventModel.findByIdAndUpdate(id, { $set: edit })
     .then((event) => {
       res.redirect("/events");
     })
@@ -159,16 +150,11 @@ router.get("/event-details/:id", async (req, res) => {
   EventModel.findById(id)
     .populate("user")
     .then(async (eventsData) => {
-      // console.log("THIS IS EVENT DATA", eventsData);
-      // console.log(`THIS IS ${eventsData.user} DETAILS`);
-      //console.log(req.session.loggedInUser._id === eventsData.user._id)
-      //console.log(eventsData)
       let creator = null;
       if (req.session.loggedInUser && eventsData.user) {
         creator = (JSON.stringify(req.session.loggedInUser._id) ===
           JSON.stringify(eventsData.user._id))
       }
-
 
       // eventsData.time = moment(eventsData.time).format('HH:mm');
       eventsData.datePretty = moment(eventsData.date).format('YYYY-MM-DD');
@@ -189,13 +175,6 @@ router.get("/event-details/:id", async (req, res) => {
         }
       }
       res.render("event-details.hbs", { eventsData, user: creator, attendee, attendeesData });      // if (
-      //   JSON.stringify(req.session.loggedInUser._id) ===
-      //   JSON.stringify(eventsData.user._id)
-      // ) {
-      //   res.render("event-details.hbs", { eventsData, user: true});
-      // } else {
-      //   res.render("event-details.hbs", { eventsData });
-      // }
     })
     .catch((err) => {
       console.log("There is an error", err);
@@ -244,16 +223,16 @@ router.get("/event-registration/:id", (req, res, next) => {
 //CANCEL event registration ROUTE
 router.get("/event-cancel-registration/:id", (req, res, next) => {
   const { id } = req.params;
-  let userId = req.session.loggedInUser._id
+  let userId = req.session.loggedInUser._id;
 
   EventModel.findById(id)
   .then((data) => {
-    let eventData = JSON.parse(JSON.stringify(data.attendEvent))
+    let eventData = JSON.parse(JSON.stringify(data.attendEvent));
     // console.log("eventData 1 is:", eventData)
 
-    let index = eventData.indexOf(userId)
+    let index = eventData.indexOf(userId);
     // console.log("index", index)
-    eventData.splice(index, 1)
+    eventData.splice(index, 1);
     // console.log("eventData is:", eventData)
 
     data.time = moment(data.date).format('HH:mm');
@@ -261,7 +240,7 @@ router.get("/event-cancel-registration/:id", (req, res, next) => {
 
       EventModel.findByIdAndUpdate(id, { $set: { attendEvent: eventData } })
         .then(() => {
-          res.render("event-cancel-registration.hbs", { data })
+          res.render("event-cancel-registration.hbs", { data });
         });
 
     });
