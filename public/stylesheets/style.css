@@ -378,8 +378,8 @@ body {
   border-radius: 4px;
   font-family: "Rubik", sans-serif;
   outline: 0;
-  transition: 0.2s;
-  margin-top: 20px; }
+  transition: .2s;
+  margin-top: 0px; }
 
 .form-field:focus {
   border-color: #0f7ef1; }

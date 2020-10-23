@@ -7,8 +7,7 @@
     </div>
 
     <div class="form">
-      <form method="POST" action="/event/{{ event.id }}/edit">
-        {{!-- <form method="POST" action="/event/{{ event.id }}/edit" enctype="multipart/form-data"> --}}
+      <form method="POST" action="/event/{{ event.id }}/edit" enctype="multipart/form-data">
 
         <label class="animation a3">Title</label><br>
         <input value="{{event.title}}" type="text" name="title" class="input-form form-field animation a3"
