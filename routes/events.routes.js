@@ -42,7 +42,7 @@ router.get("/events", (req, res) => {
     });
 });
 
-router.post("/create-event", uploader.single("imageUrl"), (req, res) => {
+router.post("/create-event", uploader.single("imageUrl"), (req, res, next) => {
   const { title, location, date, time, type, description, eventPicture } = req.body;
 
   // console.log('file is: ', req.file);

@@ -4,6 +4,7 @@ const UserModel = require("../model/User.model");
 const MessageModel = require("../model/Message.model");
 const moment = require("moment");
 
+
 router.get("/messages", (req, res) => {
   let received;
   let sent;
@@ -63,16 +64,17 @@ router.post("/messages/send/:id", (req, res) => {
 });
 
 router.get("/messages/:id", (req, res) => {
+  req.app.locals.notUser = false;
   MessageModel.findById(req.params.id)
     .populate("sender")
     .populate("recipient")
     .then((data) => {
       data.time = moment(data.createdAt).format('YYYY-MM-DD HH:mm:ss');
       if (req.session.loggedInUser._id != data.sender._id) {
-        res.render("messages/messagedetails.hbs", { data, notUser: true });
+        res.render("messages/messagedetails.hbs", { data, notProf: true });
       }
       else {
-        res.render("messages/messagedetails.hbs", { data, notUser: false });
+        res.render("messages/messagedetails.hbs", { data, notProf: false });
       }
     })
     .catch((err) => {
